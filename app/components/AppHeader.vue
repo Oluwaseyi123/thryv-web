@@ -1,8 +1,15 @@
 <script setup lang="ts">
-import { Moon } from 'lucide-vue-next'
+import { ref } from "vue";
+import { Moon } from "lucide-vue-next";
 
-import { Button } from './ui/button'
-import ThemeToggle from './ui/theme-toggle.vue'
+import { Button } from "./ui/button";
+import ThemeToggle from "./ui/theme-toggle.vue";
+
+const activeSection = ref("about");
+
+const setActiveSection = (section: string) => {
+  activeSection.value = section;
+};
 </script>
 
 <template>
@@ -30,39 +37,111 @@ import ThemeToggle from './ui/theme-toggle.vue'
         <div class="hidden lg:flex items-center gap-8">
           <a
             href="#about"
-            class="text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1] transition-colors"
+            :class="[
+              'relative transition-all duration-300 font-medium pb-1',
+              activeSection === 'about'
+                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
+                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+            ]"
+            @click="setActiveSection('about')"
           >
             About
+            <span
+              :class="[
+                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
+                activeSection === 'about' ? 'w-full' : 'w-0',
+              ]"
+            />
           </a>
           <a
             href="#features"
-            class="text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1] transition-colors"
+            :class="[
+              'relative transition-all duration-300 font-medium pb-1',
+              activeSection === 'features'
+                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
+                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+            ]"
+            @click="setActiveSection('features')"
           >
             Features
+            <span
+              :class="[
+                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
+                activeSection === 'features' ? 'w-full' : 'w-0',
+              ]"
+            />
           </a>
           <a
             href="#science"
-            class="text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1] transition-colors"
+            :class="[
+              'relative transition-all duration-300 font-medium pb-1',
+              activeSection === 'science'
+                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
+                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+            ]"
+            @click="setActiveSection('science')"
           >
             Science
+            <span
+              :class="[
+                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
+                activeSection === 'science' ? 'w-full' : 'w-0',
+              ]"
+            />
           </a>
           <a
             href="#community"
-            class="text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1] transition-colors"
+            :class="[
+              'relative transition-all duration-300 font-medium pb-1',
+              activeSection === 'community'
+                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
+                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+            ]"
+            @click="setActiveSection('community')"
           >
             Community
+            <span
+              :class="[
+                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
+                activeSection === 'community' ? 'w-full' : 'w-0',
+              ]"
+            />
           </a>
           <a
             href="#faqs"
-            class="text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1] transition-colors"
+            :class="[
+              'relative transition-all duration-300 font-medium pb-1',
+              activeSection === 'faqs'
+                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
+                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+            ]"
+            @click="setActiveSection('faqs')"
           >
             FAQs
+            <span
+              :class="[
+                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
+                activeSection === 'faqs' ? 'w-full' : 'w-0',
+              ]"
+            />
           </a>
           <a
             href="#blog"
-            class="text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1] transition-colors"
+            :class="[
+              'relative transition-all duration-300 font-medium pb-1',
+              activeSection === 'blog'
+                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
+                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+            ]"
+            @click="setActiveSection('blog')"
           >
             Blog
+            <span
+              :class="[
+                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
+                activeSection === 'blog' ? 'w-full' : 'w-0',
+              ]"
+            />
           </a>
         </div>
 
