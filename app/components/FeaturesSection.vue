@@ -57,16 +57,16 @@ const features: Feature[] = [
 <template>
   <section
     id="features"
-    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#1a1420]"
+    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark-background"
   >
     <div class="container mx-auto max-w-6xl">
       <!-- Header -->
       <div class="text-center mb-12 sm:mb-16 space-y-4">
         <div
-          class="inline-block px-4 py-2 bg-[#F7E6E1]/50 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10"
+          class="inline-block px-4 py-2 bg-accent/50 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-accent/10"
         >
           <span
-            class="text-[#6E4C6F] dark:text-[#F7E6E1]"
+            class="text-primary dark:text-accent"
             :style="{ fontSize: '0.875rem', fontWeight: '600' }"
           >
             FEATURES
@@ -74,14 +74,14 @@ const features: Feature[] = [
         </div>
 
         <h2
-          class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+          class="text-foreground dark:text-accent"
           :style="{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '700' }"
         >
           What you get with Thryve
         </h2>
 
         <p
-          class="text-[#2D2D2D]/70 dark:text-[#F7E6E1]/70 max-w-2xl mx-auto"
+          class="text-foreground/70 dark:text-accent/70 max-w-2xl mx-auto"
           :style="{ fontSize: '1.125rem' }"
         >
           Everything you need to train, eat, and live in sync with your cycle.
@@ -93,28 +93,28 @@ const features: Feature[] = [
         <div
           v-for="(feature, index) in features"
           :key="index"
-          class="group bg-gradient-to-br from-white to-[#F7E6E1]/20 dark:from-[#251c29] dark:to-[#2d2534]/50 border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10 rounded-2xl p-8 hover:shadow-lg dark:hover:shadow-2xl dark:hover:shadow-[#F7E6E1]/5 hover:border-[#6E4C6F]/20 dark:hover:border-[#F7E6E1]/20 transition-all duration-300"
+          class="group bg-linear-to-br from-white to-accent/20 dark:from-[#251c29] dark:to-[#2d2534]/50 border border-primary/10 dark:border-accent/10 rounded-2xl p-8 hover:shadow-lg dark:hover:shadow-2xl dark:hover:shadow-accent/5 hover:border-primary/20 dark:hover:border-accent/20 transition-all duration-300"
         >
           <!-- Icon -->
           <div
-            class="w-14 h-14 bg-gradient-to-br from-[#6E4C6F] to-[#CFE1D4] dark:from-[#F7E6E1] dark:to-[#7a9d89] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"
+            class="w-14 h-14 bg-linear-to-br from-primary to-[#CFE1D4] dark:from-accent dark:to-[#7a9d89] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"
           >
             <component
               :is="feature.icon"
-              class="w-7 h-7 text-white dark:text-[#1a1420]"
+              class="w-7 h-7 text-white dark:text-dark-background"
             />
           </div>
 
           <!-- Content -->
           <h3
-            class="text-[#2D2D2D] dark:text-[#F7E6E1] mb-3"
+            class="text-foreground dark:text-accent mb-3"
             :style="{ fontSize: '1.25rem', fontWeight: '600' }"
           >
             {{ feature.title }}
           </h3>
 
           <p
-            class="text-[#2D2D2D]/70 dark:text-[#F7E6E1]/70"
+            class="text-foreground/70 dark:text-accent/70"
             :style="{ lineHeight: '1.6' }"
           >
             {{ feature.description }}

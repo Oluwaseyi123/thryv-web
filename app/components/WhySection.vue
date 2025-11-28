@@ -14,21 +14,21 @@ const cards: Card[] = [
     title: 'For your body',
     description:
       'Work with your natural energy fluctuations. Build strength when your body is primed for it. Rest when you need it most. See better results with less burnout.',
-    gradient: 'from-[#F7E6E1] to-[#CFE1D4]/50'
+    gradient: 'from-accent to-secondary/50'
   },
   {
     icon: Brain,
     title: 'For your mind',
     description:
       'Stop feeling guilty about low-energy days. Understand why your mood shifts. Get clarity on patterns that seemed random before. Feel in control, not confused.',
-    gradient: 'from-[#CFE1D4] to-[#F7E6E1]/50'
+    gradient: 'from-secondary to-accent/50'
   },
   {
     icon: Sparkles,
     title: 'For your life',
     description:
       'Build sustainable habits that actually stick. No quick fixes or restrictive rules. Just science-backed guidance that respects your unique rhythm and real life.',
-    gradient: 'from-[#6E4C6F]/20 to-[#F7E6E1]/40'
+    gradient: 'from-primary/20 to-accent/40'
   }
 ]
 </script>
@@ -36,16 +36,16 @@ const cards: Card[] = [
 <template>
   <section
     id="about"
-    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#F7E6E1]/30 via-white to-[#CFE1D4]/20 dark:from-[#251c29] dark:via-[#1a1420] dark:to-[#2a3432]/20"
+    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-accent/30 via-white to-secondary/20 dark:from-[#251c29] dark:via-dark-background dark:to-[#2a3432]/20"
   >
     <div class="container mx-auto max-w-6xl">
       <!-- Header -->
       <div class="text-center mb-12 sm:mb-16 space-y-6 max-w-3xl mx-auto">
         <div
-          class="inline-block px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10"
+          class="inline-block px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-accent/10"
         >
           <span
-            class="text-[#6E4C6F] dark:text-[#F7E6E1]"
+            class="text-primary dark:text-accent"
             :style="{ fontSize: '0.875rem', fontWeight: '600' }"
           >
             WHY THRYVE
@@ -53,7 +53,7 @@ const cards: Card[] = [
         </div>
 
         <h2
-          class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+          class="text-foreground dark:text-accent"
           :style="{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             fontWeight: '700',
@@ -64,7 +64,7 @@ const cards: Card[] = [
         </h2>
 
         <div
-          class="space-y-4 text-[#2D2D2D]/80 dark:text-[#F7E6E1]/80"
+          class="space-y-4 text-foreground/80 dark:text-accent/80"
           :style="{ fontSize: '1.125rem', lineHeight: '1.7' }"
         >
           <p>
@@ -76,7 +76,7 @@ const cards: Card[] = [
             Women with irregular cycles or PCOS feel especially unseen. The
             advice out there assumes everyone fits the same 28-day mold.
             <span
-              class="text-[#6E4C6F] dark:text-[#CFE1D4]"
+              class="text-primary dark:text-secondary"
               :style="{ fontWeight: '600' }"
             >
               That's not good enough.
@@ -95,7 +95,7 @@ const cards: Card[] = [
         <div
           v-for="(card, index) in cards"
           :key="index"
-          class="group relative bg-white dark:bg-[#251c29] border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10 rounded-2xl p-8 hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-[#F7E6E1]/5 transition-all duration-300 overflow-hidden"
+          class="group relative bg-white dark:bg-[#251c29] border border-primary/10 dark:border-accent/10 rounded-2xl p-8 hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-accent/5 transition-all duration-300 overflow-hidden"
         >
           <!-- Gradient background -->
           <div
@@ -106,24 +106,24 @@ const cards: Card[] = [
           <div class="relative space-y-4">
             <!-- Icon -->
             <div
-              class="w-14 h-14 bg-gradient-to-br from-[#6E4C6F] to-[#6E4C6F]/70 dark:from-[#F7E6E1] dark:to-[#CFE1D4] rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform"
+              class="w-14 h-14 bg-gradient-to-br from-primary to-primary/70 dark:from-accent dark:to-secondary rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform"
             >
               <component
                 :is="card.icon"
-                class="w-7 h-7 text-white dark:text-[#1a1420]"
+                class="w-7 h-7 text-white dark:text-dark-background"
               />
             </div>
 
             <!-- Content -->
             <h3
-              class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+              class="text-foreground dark:text-accent"
               :style="{ fontSize: '1.5rem', fontWeight: '700' }"
             >
               {{ card.title }}
             </h3>
 
             <p
-              class="text-[#2D2D2D]/70 dark:text-[#F7E6E1]/70"
+              class="text-foreground/70 dark:text-accent/70"
               :style="{ lineHeight: '1.7' }"
             >
               {{ card.description }}

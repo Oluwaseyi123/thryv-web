@@ -22,8 +22,8 @@ onMounted(() => {
   intervalId = setInterval(() => {
     isAnimating.value = true
     timeoutId = setTimeout(() => {
-      currentWordIndex.value
-        = (currentWordIndex.value + 1) % rotatingWords.length
+      currentWordIndex.value =
+        (currentWordIndex.value + 1) % rotatingWords.length
       isAnimating.value = false
     }, 300)
   }, 3000)
@@ -61,31 +61,18 @@ onBeforeUnmount(() => {
 
 <template>
   <section
-    class="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center"
+    class="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-screen flex items-center bg-background/95 dark:bg-dark-background/95 backdrop-blur-md"
   >
-    <!-- Gradient Background -->
-    <div
-      class="absolute inset-0 bg-gradient-to-br from-[#F7E6E1] via-[#FDFBF9] to-[#CFE1D4]/40 dark:from-[#1a1420] dark:via-[#251c29] dark:to-[#2a3432]/40 -z-10"
-    />
-
-    <!-- Abstract Shapes -->
-    <div
-      class="absolute top-20 right-10 w-72 h-72 bg-[#CFE1D4]/30 dark:bg-[#7a9d89]/10 rounded-full blur-3xl -z-10"
-    />
-    <div
-      class="absolute bottom-20 left-10 w-96 h-96 bg-[#F7E6E1]/40 dark:bg-[#6E4C6F]/20 rounded-full blur-3xl -z-10"
-    />
-
     <div class="container mx-auto max-w-7xl w-full">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Left Content -->
         <div class="text-center lg:text-left space-y-8 order-2 lg:order-1">
           <div
-            class="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-accent/10"
           >
-            <Sparkles class="w-4 h-4 text-[#6E4C6F] dark:text-[#F7E6E1]" />
+            <Sparkles class="w-4 h-4 text-primary dark:text-accent" />
             <span
-              class="text-[#6E4C6F] dark:text-[#F7E6E1]"
+              class="text-primary dark:text-accent"
               :style="{ fontSize: '0.875rem', fontWeight: 600 }"
             >
               Hormone-aware wellness
@@ -94,7 +81,7 @@ onBeforeUnmount(() => {
 
           <div class="space-y-4">
             <h1
-              class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+              class="text-foreground dark:text-accent"
               :style="{
                 fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
                 fontWeight: 700,
@@ -105,7 +92,7 @@ onBeforeUnmount(() => {
               <span class="relative inline-block">
                 <span
                   :class="[
-                    'text-[#6E4C6F] dark:text-[#CFE1D4] transition-all duration-300',
+                    'text-primary dark:text-secondary transition-all duration-300',
                     isAnimating
                       ? 'opacity-0 translate-y-4'
                       : 'opacity-100 translate-y-0'
@@ -115,13 +102,13 @@ onBeforeUnmount(() => {
                   {{ rotatingWords[currentWordIndex] }}
                 </span>
               </span>
-              <br>
+              <br />
               with your cycle.
             </h1>
           </div>
 
           <p
-            class="text-[#2D2D2D]/80 dark:text-[#F7E6E1]/70 max-w-xl mx-auto lg:mx-0"
+            class="text-foreground/80 dark:text-accent/70 max-w-xl mx-auto lg:mx-0"
             :style="{ fontSize: '1.25rem', lineHeight: 1.7 }"
           >
             Thryve helps you work with your hormones — not against them —
@@ -131,7 +118,7 @@ onBeforeUnmount(() => {
           <!-- CTAs -->
           <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto lg:mx-0">
             <Button
-              class="h-14 px-8 bg-[#6E4C6F] hover:bg-[#5a3d5b] dark:bg-[#F7E6E1] dark:hover:bg-white dark:text-[#1a1420] text-white rounded-xl"
+              class="h-14 px-8 bg-primary hover:bg-[#5a3d5b] dark:bg-accent dark:hover:bg-white dark:text-dark-background text-white rounded-xl"
               :style="{ fontSize: '1.125rem', fontWeight: 600 }"
             >
               Get Early Access
@@ -139,7 +126,7 @@ onBeforeUnmount(() => {
 
             <Button
               variant="outline"
-              class="h-14 px-8 bg-transparent hover:bg-[#6E4C6F]/5 dark:hover:bg-[#F7E6E1]/5 text-[#6E4C6F] dark:text-[#F7E6E1] border-[#6E4C6F]/30 dark:border-[#F7E6E1]/30 rounded-xl"
+              class="h-14 px-8 bg-transparent hover:bg-primary/5 dark:hover:bg-accent/5 text-primary dark:text-accent border-primary/30 dark:border-accent/30 rounded-xl"
               :style="{ fontSize: '1.125rem', fontWeight: 600 }"
               @click="scrollToFeatures"
             >
@@ -159,37 +146,27 @@ onBeforeUnmount(() => {
           }"
         >
           <div class="relative w-full max-w-sm">
-            <!-- Decorative elements -->
-            <div
-              class="absolute -top-8 -left-8 w-32 h-32 bg-gradient-to-br from-[#6E4C6F]/20 dark:from-[#F7E6E1]/10 to-transparent rounded-full blur-2xl"
-            />
-            <div
-              class="absolute -bottom-8 -right-8 w-40 h-40 bg-gradient-to-br from-[#CFE1D4]/40 dark:from-[#7a9d89]/20 to-transparent rounded-full blur-2xl"
-            />
-
             <!-- Phone mockup -->
             <div
-              class="relative bg-white dark:bg-[#251c29] rounded-3xl shadow-2xl p-3 border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10"
+              class="relative bg-white dark:bg-[#251c29] rounded-3xl shadow-2xl p-3 border border-primary/10 dark:border-accent/10"
             >
               <div
-                class="aspect-[9/19] bg-gradient-to-br from-[#F7E6E1] dark:from-[#2d2534] via-white dark:via-[#251c29] to-[#CFE1D4]/30 dark:to-[#2a3432]/30 rounded-2xl overflow-hidden"
+                class="aspect-[9/19] bg-linear-to-br from-accent dark:from-[#2d2534] via-white dark:via-[#251c29] to-secondary/30 dark:to-[#2a3432]/30 rounded-2xl overflow-hidden"
               >
                 <!-- Mock app interface -->
                 <div class="p-6 space-y-6">
                   <div class="flex items-center justify-between">
                     <div
-                      class="w-12 h-12 rounded-full bg-[#6E4C6F]/10 dark:bg-[#F7E6E1]/10 flex items-center justify-center"
+                      class="w-12 h-12 rounded-full bg-primary/10 dark:bg-accent/10 flex items-center justify-center"
                     >
-                      <Sparkles
-                        class="w-6 h-6 text-[#6E4C6F] dark:text-[#F7E6E1]"
-                      />
+                      <Sparkles class="w-6 h-6 text-primary dark:text-accent" />
                     </div>
                     <div
-                      class="px-3 py-1 bg-[#CFE1D4]/50 dark:bg-[#7a9d89]/20 rounded-full"
+                      class="px-3 py-1 bg-secondary/50 dark:bg-[#7a9d89]/20 rounded-full"
                     >
                       <span
                         :style="{ fontSize: '0.75rem', fontWeight: 600 }"
-                        class="text-[#2D2D2D] dark:text-[#CFE1D4]"
+                        class="text-foreground dark:text-secondary"
                       >
                         Follicular Phase
                       </span>
@@ -199,12 +176,12 @@ onBeforeUnmount(() => {
                   <div>
                     <h3
                       :style="{ fontSize: '1.5rem', fontWeight: 600 }"
-                      class="text-[#2D2D2D] dark:text-[#F7E6E1] mb-2"
+                      class="text-foreground dark:text-accent mb-2"
                     >
                       Good morning!
                     </h3>
                     <p
-                      class="text-[#2D2D2D]/60 dark:text-[#F7E6E1]/60"
+                      class="text-foreground/60 dark:text-accent/60"
                       :style="{ fontSize: '0.875rem' }"
                     >
                       Day 8 of your cycle
@@ -212,60 +189,60 @@ onBeforeUnmount(() => {
                   </div>
 
                   <div
-                    class="bg-white/80 dark:bg-[#1a1420]/40 rounded-2xl p-4 space-y-3 border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10"
+                    class="bg-white/80 dark:bg-dark-background/40 rounded-2xl p-4 space-y-3 border border-primary/10 dark:border-accent/10"
                   >
                     <div class="flex items-center justify-between">
                       <span
-                        class="text-[#2D2D2D]/60 dark:text-[#F7E6E1]/60"
+                        class="text-foreground/60 dark:text-accent/60"
                         :style="{ fontSize: '0.875rem' }"
                       >
                         Energy Level
                       </span>
                       <span
-                        class="text-[#6E4C6F] dark:text-[#CFE1D4]"
+                        class="text-primary dark:text-secondary"
                         :style="{ fontSize: '0.875rem', fontWeight: 600 }"
                       >
                         Rising ↗
                       </span>
                     </div>
                     <div
-                      class="h-2 bg-[#F7E6E1] dark:bg-[#2d2534] rounded-full overflow-hidden"
+                      class="h-2 bg-accent dark:bg-[#2d2534] rounded-full overflow-hidden"
                     >
                       <div
-                        class="h-full w-3/4 bg-gradient-to-r from-[#6E4C6F] to-[#CFE1D4] dark:from-[#F7E6E1] dark:to-[#7a9d89]"
+                        class="h-full w-3/4 bg-linear-to-r from-primary to-secondary dark:from-accent dark:to-[#7a9d89]"
                       />
                     </div>
                   </div>
 
                   <div class="space-y-3">
                     <div
-                      class="bg-white/60 dark:bg-[#1a1420]/30 rounded-xl p-4 border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10"
+                      class="bg-white/60 dark:bg-dark-background/30 rounded-xl p-4 border border-primary/10 dark:border-accent/10"
                     >
                       <div
                         :style="{ fontSize: '0.75rem', fontWeight: 600 }"
-                        class="text-[#6E4C6F] dark:text-[#CFE1D4] mb-1"
+                        class="text-primary dark:text-secondary mb-1"
                       >
                         Today's Focus
                       </div>
                       <div
                         :style="{ fontSize: '0.875rem' }"
-                        class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+                        class="text-foreground dark:text-accent"
                       >
                         Strength Training
                       </div>
                     </div>
                     <div
-                      class="bg-white/60 dark:bg-[#1a1420]/30 rounded-xl p-4 border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10"
+                      class="bg-white/60 dark:bg-dark-background/30 rounded-xl p-4 border border-primary/10 dark:border-accent/10"
                     >
                       <div
                         :style="{ fontSize: '0.75rem', fontWeight: 600 }"
-                        class="text-[#6E4C6F] dark:text-[#CFE1D4] mb-1"
+                        class="text-primary dark:text-secondary mb-1"
                       >
                         Nutrition
                       </div>
                       <div
                         :style="{ fontSize: '0.875rem' }"
-                        class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+                        class="text-foreground dark:text-accent"
                       >
                         Protein-rich meals
                       </div>
@@ -273,9 +250,7 @@ onBeforeUnmount(() => {
                   </div>
                 </div>
               </div>
-              <!-- /inner gradient card -->
             </div>
-            <!-- /phone mockup wrapper -->
           </div>
         </div>
       </div>

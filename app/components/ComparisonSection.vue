@@ -18,19 +18,19 @@ const withThryve = [
 
 <template>
   <section
-    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-[#1a1420]"
+    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark-background"
   >
     <div class="container mx-auto max-w-6xl">
       <!-- Header -->
       <div class="text-center mb-12 sm:mb-16 space-y-4">
         <h2
-          class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+          class="text-foreground dark:text-accent"
           :style="{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '700' }"
         >
           Training with Thryve vs training on guesswork
         </h2>
         <p
-          class="text-[#2D2D2D]/70 dark:text-[#F7E6E1]/70 max-w-2xl mx-auto"
+          class="text-foreground/70 dark:text-accent/70 max-w-2xl mx-auto"
           :style="{ fontSize: '1.125rem' }"
         >
           Stop fighting your body. Start working with it.
@@ -50,7 +50,7 @@ const withThryve = [
               <X class="w-6 h-6 text-red-600 dark:text-red-400" />
             </div>
             <h3
-              class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+              class="text-foreground dark:text-accent"
               :style="{ fontSize: '1.5rem', fontWeight: '700' }"
             >
               Without Thryve
@@ -67,7 +67,7 @@ const withThryve = [
                 class="w-5 h-5 text-red-500 dark:text-red-400 flex-shrink-0 mt-0.5"
               />
               <span
-                class="text-[#2D2D2D]/80 dark:text-[#F7E6E1]/80"
+                class="text-foreground/80 dark:text-accent/80"
                 :style="{ lineHeight: '1.6' }"
               >
                 {{ item }}
@@ -78,21 +78,21 @@ const withThryve = [
 
         <!-- With Thryve -->
         <div
-          class="bg-gradient-to-br from-[#CFE1D4]/30 to-[#F7E6E1]/30 dark:from-[#7a9d89]/10 dark:to-[#6E4C6F]/10 border border-[#6E4C6F]/20 dark:border-[#F7E6E1]/20 rounded-2xl p-8 space-y-6 relative overflow-hidden"
+          class="bg-linear-to-br from-secondary/30 to-accent/30 dark:from-[#7a9d89]/10 dark:to-primary/10 border border-primary/20 dark:border-accent/20 rounded-2xl p-8 space-y-6 relative overflow-hidden"
         >
           <!-- Highlight effect -->
           <div
-            class="absolute -top-20 -right-20 w-40 h-40 bg-[#6E4C6F]/10 dark:bg-[#F7E6E1]/5 rounded-full blur-3xl"
+            class="absolute -top-20 -right-20 w-40 h-40 bg-primary/10 dark:bg-accent/5 rounded-full blur-3xl"
           />
 
           <div class="flex items-center gap-3 relative">
             <div
-              class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#6E4C6F] to-[#CFE1D4] dark:from-[#F7E6E1] dark:to-[#7a9d89] flex items-center justify-center"
+              class="w-12 h-12 rounded-xl bg-linear-to-br from-primary to-secondary dark:from-accent dark:to-[#7a9d89] flex items-center justify-center"
             >
-              <Check class="w-6 h-6 text-white dark:text-[#1a1420]" />
+              <Check class="w-6 h-6 text-white dark:text-dark-background" />
             </div>
             <h3
-              class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+              class="text-foreground dark:text-accent"
               :style="{ fontSize: '1.5rem', fontWeight: '700' }"
             >
               With Thryve
@@ -106,10 +106,10 @@ const withThryve = [
               class="flex items-start gap-3"
             >
               <Check
-                class="w-5 h-5 text-[#6E4C6F] dark:text-[#CFE1D4] flex-shrink-0 mt-0.5"
+                class="w-5 h-5 text-primary dark:text-secondary shrink-0 mt-0.5"
               />
               <span
-                class="text-[#2D2D2D]/80 dark:text-[#F7E6E1]/80"
+                class="text-foreground/80 dark:text-accent/80"
                 :style="{ lineHeight: '1.6' }"
               >
                 {{ item }}
@@ -122,7 +122,7 @@ const withThryve = [
       <!-- Bottom CTA -->
       <div class="mt-12 text-center">
         <p
-          class="text-[#6E4C6F] dark:text-[#CFE1D4]"
+          class="text-primary dark:text-secondary"
           :style="{ fontSize: '1.125rem', fontWeight: '600' }"
         >
           Ready to make the switch?

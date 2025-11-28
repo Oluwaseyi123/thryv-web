@@ -131,16 +131,16 @@ onMounted(() => {
   <section
     id="science"
     ref="sectionRef"
-    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#CFE1D4]/20 via-white to-[#F7E6E1]/30 dark:from-[#2a3432]/20 dark:via-[#1a1420] dark:to-[#251c29]"
+    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-secondary/20 via-white to-accent/30 dark:from-[#2a3432]/20 dark:via-dark-background dark:to-[#251c29]"
   >
     <div class="container mx-auto max-w-6xl">
       <!-- Header -->
       <div class="text-center mb-12 sm:mb-16 space-y-4">
         <div
-          class="inline-block px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10"
+          class="inline-block px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-accent/10"
         >
           <span
-            class="text-[#6E4C6F] dark:text-[#F7E6E1]"
+            class="text-primary dark:text-accent"
             :style="{ fontSize: '0.875rem', fontWeight: '600' }"
           >
             THE SCIENCE
@@ -148,7 +148,7 @@ onMounted(() => {
         </div>
 
         <h2
-          class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+          class="text-foreground dark:text-accent"
           :style="{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             fontWeight: '700',
@@ -159,7 +159,7 @@ onMounted(() => {
         </h2>
 
         <p
-          class="text-[#2D2D2D]/70 dark:text-[#F7E6E1]/70 max-w-2xl mx-auto"
+          class="text-foreground/70 dark:text-accent/70 max-w-2xl mx-auto"
           :style="{ fontSize: '1.125rem' }"
         >
           Understanding your menstrual cycle is key to optimizing your wellness.
@@ -171,16 +171,16 @@ onMounted(() => {
         <!-- Left - Explanation -->
         <div class="space-y-6">
           <div
-            class="bg-white dark:bg-[#251c29] border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10 rounded-2xl p-8 space-y-4"
+            class="bg-white dark:bg-[#251c29] border border-primary/10 dark:border-accent/10 rounded-2xl p-8 space-y-4"
           >
             <h3
-              class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+              class="text-foreground dark:text-accent"
               :style="{ fontSize: '1.5rem', fontWeight: '700' }"
             >
               Your cycle affects everything
             </h3>
             <div
-              class="space-y-3 text-[#2D2D2D]/80 dark:text-[#F7E6E1]/80"
+              class="space-y-3 text-foreground/80 dark:text-accent/80"
               :style="{ lineHeight: '1.7' }"
             >
               <p>
@@ -190,7 +190,7 @@ onMounted(() => {
               </p>
               <p>
                 <span
-                  class="text-[#6E4C6F] dark:text-[#CFE1D4]"
+                  class="text-primary dark:text-secondary"
                   :style="{ fontWeight: '600' }"
                 >
                   Estrogen and progesterone
@@ -207,16 +207,16 @@ onMounted(() => {
           </div>
 
           <div
-            class="bg-white dark:bg-[#251c29] border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10 rounded-2xl p-8 space-y-4"
+            class="bg-white dark:bg-[#251c29] border border-primary/10 dark:border-accent/10 rounded-2xl p-8 space-y-4"
           >
             <h3
-              class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+              class="text-foreground dark:text-accent"
               :style="{ fontSize: '1.5rem', fontWeight: '700' }"
             >
               PCOS & irregular cycles
             </h3>
             <p
-              class="text-[#2D2D2D]/80 dark:text-[#F7E6E1]/80"
+              class="text-foreground/80 dark:text-accent/80"
               :style="{ lineHeight: '1.7' }"
             >
               Not everyone has a "textbook" 28-day cycle. Thryve is designed to
@@ -229,10 +229,10 @@ onMounted(() => {
 
         <!-- Right - Cycle Diagram -->
         <div
-          class="bg-white dark:bg-[#251c29] border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10 rounded-2xl p-8"
+          class="bg-white dark:bg-[#251c29] border border-primary/10 dark:border-accent/10 rounded-2xl p-8"
         >
           <h3
-            class="text-center text-[#2D2D2D] dark:text-[#F7E6E1] mb-8"
+            class="text-center text-foreground dark:text-accent mb-8"
             :style="{ fontSize: '1.25rem', fontWeight: '700' }"
           >
             The Four Phases
@@ -248,17 +248,17 @@ onMounted(() => {
           >
             <!-- Center circle -->
             <div
-              class="absolute inset-[30%] rounded-full bg-gradient-to-br from-[#F7E6E1] dark:from-[#2d2534] to-[#CFE1D4] dark:to-[#1a1420] flex items-center justify-center border-2 border-[#6E4C6F]/20 dark:border-[#F7E6E1]/20"
+              class="absolute inset-[30%] rounded-full bg-gradient-to-br from-accent dark:from-[#2d2534] to-secondary dark:to-dark-background flex items-center justify-center border-2 border-primary/20 dark:border-accent/20"
             >
               <div class="text-center">
                 <div
-                  class="text-[#6E4C6F] dark:text-[#F7E6E1]"
+                  class="text-primary dark:text-accent"
                   :style="{ fontSize: '2.5rem', fontWeight: '700' }"
                 >
                   28
                 </div>
                 <div
-                  class="text-[#2D2D2D]/60 dark:text-[#F7E6E1]/60"
+                  class="text-foreground/60 dark:text-accent/60"
                   :style="{ fontSize: '0.875rem' }"
                 >
                   days
@@ -293,25 +293,25 @@ onMounted(() => {
               v-for="(phase, index) in [
                 {
                   ...phases[0],
-                  bg: 'bg-[#6E4C6F] dark:bg-[#8a6a8b]',
+                  bg: 'bg-primary dark:bg-[#8a6a8b]',
                   text: 'text-white',
                   startDay: 0
                 },
                 {
                   ...phases[1],
-                  bg: 'bg-[#CFE1D4] dark:bg-[#7a9d89]',
-                  text: 'text-[#2D2D2D] dark:text-white',
+                  bg: 'bg-secondary dark:bg-[#7a9d89]',
+                  text: 'text-foreground dark:text-white',
                   startDay: 5
                 },
                 {
                   ...phases[2],
-                  bg: 'bg-[#F7E6E1] dark:bg-[#8a6a8b]',
-                  text: 'text-[#2D2D2D] dark:text-white',
+                  bg: 'bg-accent dark:bg-[#8a6a8b]',
+                  text: 'text-foreground dark:text-white',
                   startDay: 13
                 },
                 {
                   ...phases[3],
-                  bg: 'bg-[#6E4C6F]/60 dark:bg-[#8a6a8b]',
+                  bg: 'bg-primary/60 dark:bg-[#8a6a8b]',
                   text: 'text-white',
                   startDay: 16
                 }
@@ -341,7 +341,7 @@ onMounted(() => {
             <div
               v-for="(phase, index) in phases"
               :key="index"
-              class="flex items-center gap-3 p-3 bg-[#F7E6E1]/30 dark:bg-[#2d2534]/50 rounded-xl transition-all duration-500 ease-out"
+              class="flex items-center gap-3 p-3 bg-accent/30 dark:bg-[#2d2534]/50 rounded-xl transition-all duration-500 ease-out"
               :class="{
                 'opacity-0 translate-y-4': !isVisible,
                 'opacity-100 translate-y-0': isVisible
@@ -362,13 +362,13 @@ onMounted(() => {
               </div>
               <div>
                 <div
-                  class="text-[#2D2D2D] dark:text-[#F7E6E1]"
+                  class="text-foreground dark:text-accent"
                   :style="{ fontSize: '0.875rem', fontWeight: '600' }"
                 >
                   {{ phase.name }}
                 </div>
                 <div
-                  class="text-[#2D2D2D]/60 dark:text-[#F7E6E1]/60"
+                  class="text-foreground/60 dark:text-accent/60"
                   :style="{ fontSize: '0.75rem' }"
                 >
                   Days {{ phase.days }}
@@ -381,10 +381,10 @@ onMounted(() => {
 
       <!-- Bottom note -->
       <div
-        class="bg-[#CFE1D4]/20 dark:bg-[#2a3432]/20 border border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10 rounded-2xl p-8 text-center"
+        class="bg-secondary/20 dark:bg-[#2a3432]/20 border border-primary/10 dark:border-accent/10 rounded-2xl p-8 text-center"
       >
         <p
-          class="text-[#2D2D2D]/70 dark:text-[#F7E6E1]/70"
+          class="text-foreground/70 dark:text-accent/70"
           :style="{
             fontSize: '0.875rem',
             fontStyle: 'italic',
@@ -392,9 +392,10 @@ onMounted(() => {
           }"
         >
           <span
-            class="text-[#6E4C6F] dark:text-[#CFE1D4]"
+            class="text-primary dark:text-secondary"
             :style="{ fontWeight: '600' }"
-          >Important:</span>
+            >Important:</span
+          >
           Thryve provides education and guidance based on peer-reviewed
           research. It is not a medical app and does not diagnose or treat any
           conditions. Always consult with your healthcare provider for medical

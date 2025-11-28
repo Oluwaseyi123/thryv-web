@@ -1,9 +1,7 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
 
-const color = computed(() =>
-  colorMode.value === 'dark' ? '#171717' : 'white'
-)
+const color = computed(() => (colorMode.value === 'dark' ? '#171717' : 'white'))
 
 useHead({
   meta: [
@@ -25,12 +23,12 @@ useSeoMeta({
 
 <template>
   <UApp :toaster="{ expand: false }">
-    <AppHeader />
+    <!-- <AppHeader /> -->
 
     <UMain>
       <NuxtPage />
     </UMain>
 
-    <AppFooter />
+    <!-- <AppFooter /> -->
   </UApp>
 </template>

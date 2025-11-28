@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: 'default'
+})
+
 const { data: page } = await useAsyncData('index', () =>
   queryCollection('content').first()
 )
@@ -9,7 +13,6 @@ if (!page.value) {
     fatal: true
   })
 }
-
 useSeoMeta({
   title: page.value.seo?.title || page.value.title,
   ogTitle: page.value.seo?.title || page.value.title,
@@ -19,17 +22,16 @@ useSeoMeta({
 </script>
 
 <template>
-  <div
-    v-if="page"
-    class="relative"
-  >
-    <Hero />
-    <ComparisonSection />
-    <WhySection />
-    <FeaturesSection />
-    <ScienceSection />
-    <CommunitySection />
-    <FaqSection />
-    <BlogPreview />
+  <div v-if="page" class="relative">
+    <NuxtLayout name="default">
+      <Hero />
+      <ComparisonSection />
+      <WhySection />
+      <FeaturesSection />
+      <ScienceSection />
+      <CommunitySection />
+      <FaqSection />
+      <BlogPreview />
+    </NuxtLayout>
   </div>
 </template>

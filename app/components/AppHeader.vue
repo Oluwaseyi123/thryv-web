@@ -1,32 +1,35 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import { Moon } from "lucide-vue-next";
+import { ref } from 'vue'
+import { Moon } from 'lucide-vue-next'
 
-import { Button } from "./ui/button";
-import ThemeToggle from "./ui/theme-toggle.vue";
+import { Button } from './ui/button'
+import ThemeToggle from './ui/theme-toggle.vue'
 
-const activeSection = ref("about");
+const route = useRoute()
+const activeSection = ref('')
 
 const setActiveSection = (section: string) => {
-  activeSection.value = section;
-};
+  console.log(route)
+
+  activeSection.value = section
+}
 </script>
 
 <template>
   <nav
-    class="fixed top-0 left-0 right-0 z-50 bg-[#FDFBF9]/95 dark:bg-[#1a1420]/95 backdrop-blur-md border-b border-[#6E4C6F]/10 dark:border-[#F7E6E1]/10"
+    class="fixed top-0 left-0 right-0 z-50 bg-background/95 dark:bg-dark-background/95 backdrop-blur-md border-b border-primary/10 dark:border-accent/10"
   >
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 sm:h-20">
         <!-- Logo -->
         <div class="flex items-center gap-2">
           <div
-            class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#6E4C6F] to-[#F7E6E1]"
+            class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-linear-to-br from-primary to-accent"
           >
             <Moon class="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
           <span
-            class="text-[#6E4C6F] dark:text-[#F7E6E1]"
+            class="text-primary dark:text-accent"
             :style="{ fontSize: '1.25rem', fontWeight: '700' }"
           >
             Thryve
@@ -36,110 +39,112 @@ const setActiveSection = (section: string) => {
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center gap-8">
           <a
-            href="#about"
+            href="/#about"
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'about'
-                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
-                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+                ? 'text-primary dark:text-accent'
+                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
             ]"
             @click="setActiveSection('about')"
           >
             About
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
-                activeSection === 'about' ? 'w-full' : 'w-0',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                activeSection === 'about' ? 'w-full' : 'w-0'
               ]"
             />
           </a>
           <a
-            href="#features"
+            href="/#features"
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'features'
-                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
-                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+                ? 'text-primary dark:text-accent'
+                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
             ]"
             @click="setActiveSection('features')"
           >
             Features
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
-                activeSection === 'features' ? 'w-full' : 'w-0',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                activeSection === 'features' ? 'w-full' : 'w-0'
               ]"
             />
           </a>
           <a
-            href="#science"
+            href="/#science"
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'science'
-                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
-                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+                ? 'text-primary dark:text-accent'
+                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
             ]"
             @click="setActiveSection('science')"
           >
             Science
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
-                activeSection === 'science' ? 'w-full' : 'w-0',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                activeSection === 'science' ? 'w-full' : 'w-0'
               ]"
             />
           </a>
           <a
-            href="#community"
+            href="/#community"
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'community'
-                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
-                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+                ? 'text-primary dark:text-accent'
+                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
             ]"
             @click="setActiveSection('community')"
           >
             Community
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
-                activeSection === 'community' ? 'w-full' : 'w-0',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                activeSection === 'community' ? 'w-full' : 'w-0'
               ]"
             />
           </a>
           <a
-            href="#faqs"
+            href="/#faqs"
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'faqs'
-                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
-                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+                ? 'text-primary dark:text-accent'
+                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
             ]"
             @click="setActiveSection('faqs')"
           >
             FAQs
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
-                activeSection === 'faqs' ? 'w-full' : 'w-0',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                activeSection === 'faqs' ? 'w-full' : 'w-0'
               ]"
             />
           </a>
           <a
-            href="#blog"
+            href="/#blog"
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
-              activeSection === 'blog'
-                ? 'text-[#6E4C6F] dark:text-[#F7E6E1]'
-                : 'text-[#2D2D2D] dark:text-[#F7E6E1]/80 hover:text-[#6E4C6F] dark:hover:text-[#F7E6E1]',
+              activeSection === 'blog' || route.path.startsWith('/blog')
+                ? 'text-primary dark:text-accent'
+                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
             ]"
             @click="setActiveSection('blog')"
           >
             Blog
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-[#6E4C6F] dark:bg-[#F7E6E1] transition-all duration-300 ease-out',
-                activeSection === 'blog' ? 'w-full' : 'w-0',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                activeSection === 'blog' || route.path.startsWith('/blog')
+                  ? 'w-full'
+                  : 'w-0'
               ]"
             />
           </a>
@@ -148,7 +153,7 @@ const setActiveSection = (section: string) => {
         <!-- Right side - CTA + Theme Toggle -->
         <div class="flex items-center gap-3">
           <Button
-            class="bg-[#6E4C6F] hover:bg-[#5a3d5b] dark:bg-[#F7E6E1] dark:hover:bg-white dark:text-[#1a1420] text-white rounded-xl px-4 sm:px-6"
+            class="bg-primary hover:bg-[#5a3d5b] dark:bg-accent dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-4 sm:px-6"
             :style="{ fontSize: '0.95rem', fontWeight: '600' }"
           >
             Get Early Access

@@ -1,8 +1,15 @@
-@import "tailwindcss";
-@import "@nuxt/ui";
+@import 'tailwindcss';
+@import '@nuxt/ui';
 
 @source "../../../content/**/*";
 
 @theme {
-  --font-sans: "Public Sans", sans-serif;
+  --font-sans: 'Public Sans', sans-serif;
+  --color-primary: #6e4c6f;
+  --color-background: #fdfbf9;
+  --color-foreground: #2d2d2d;
+  --color-secondary: #cfe1d4;
+  --color-accent: #f7e6e1;
+  --color-dark-background: #1a1420;
+  --color-dark-foreground: #e1e1e1;
 }
