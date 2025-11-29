@@ -63,10 +63,10 @@ const features: Feature[] = [
       <!-- Header -->
       <div class="text-center mb-12 sm:mb-16 space-y-4">
         <div
-          class="inline-block px-4 py-2 bg-accent/50 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-accent/10"
+          class="inline-block px-4 py-2 bg-blush-pink/50 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-blush-pink/10"
         >
           <span
-            class="text-primary dark:text-accent"
+            class="text-primary dark:text-blush-pink"
             :style="{ fontSize: '0.875rem', fontWeight: '600' }"
           >
             FEATURES
@@ -74,14 +74,14 @@ const features: Feature[] = [
         </div>
 
         <h2
-          class="text-foreground dark:text-accent"
+          class="text-foreground dark:text-blush-pink"
           :style="{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: '700' }"
         >
           What you get with Thryve
         </h2>
 
         <p
-          class="text-foreground/70 dark:text-accent/70 max-w-2xl mx-auto"
+          class="text-foreground/70 dark:text-blush-pink/70 max-w-2xl mx-auto"
           :style="{ fontSize: '1.125rem' }"
         >
           Everything you need to train, eat, and live in sync with your cycle.
@@ -93,11 +93,11 @@ const features: Feature[] = [
         <div
           v-for="(feature, index) in features"
           :key="index"
-          class="group bg-linear-to-br from-white to-accent/20 dark:from-[#251c29] dark:to-[#2d2534]/50 border border-primary/10 dark:border-accent/10 rounded-2xl p-8 hover:shadow-lg dark:hover:shadow-2xl dark:hover:shadow-accent/5 hover:border-primary/20 dark:hover:border-accent/20 transition-all duration-300"
+          class="group bg-linear-to-br from-white to-blush-pink/20 dark:from-[#251c29] dark:to-[#2d2534]/50 border border-primary/10 dark:border-blush-pink/10 rounded-2xl p-8 hover:shadow-lg dark:hover:shadow-2xl dark:hover:shadow-blush-pink/5 hover:border-primary/20 dark:hover:border-blush-pink/20 transition-all duration-300"
         >
           <!-- Icon -->
           <div
-            class="w-14 h-14 bg-linear-to-br from-primary to-[#CFE1D4] dark:from-accent dark:to-[#7a9d89] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"
+            class="w-14 h-14 bg-linear-to-br from-primary to-[#CFE1D4] dark:from-blush-pink dark:to-[#7a9d89] rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform"
           >
             <component
               :is="feature.icon"
@@ -107,14 +107,14 @@ const features: Feature[] = [
 
           <!-- Content -->
           <h3
-            class="text-foreground dark:text-accent mb-3"
+            class="text-foreground dark:text-blush-pink mb-3"
             :style="{ fontSize: '1.25rem', fontWeight: '600' }"
           >
             {{ feature.title }}
           </h3>
 
           <p
-            class="text-foreground/70 dark:text-accent/70"
+            class="text-foreground/70 dark:text-blush-pink/70"
             :style="{ lineHeight: '1.6' }"
           >
             {{ feature.description }}

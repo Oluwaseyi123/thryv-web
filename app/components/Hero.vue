@@ -2,6 +2,7 @@
 import { ref, onMounted, onBeforeUnmount, onUnmounted } from 'vue'
 import { ArrowDown, Sparkles } from 'lucide-vue-next'
 import { Button } from './ui/button'
+import { Input } from './ui/input'
 
 const rotatingWords = ['energy', 'training', 'focus', 'recovery', 'wellness']
 
@@ -68,11 +69,11 @@ onBeforeUnmount(() => {
         <!-- Left Content -->
         <div class="text-center lg:text-left space-y-8 order-2 lg:order-1">
           <div
-            class="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-accent/10"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-blush-pink/10"
           >
-            <Sparkles class="w-4 h-4 text-primary dark:text-accent" />
+            <Sparkles class="w-4 h-4 text-primary dark:text-blush-pink" />
             <span
-              class="text-primary dark:text-accent"
+              class="text-primary dark:text-blush-pink"
               :style="{ fontSize: '0.875rem', fontWeight: 600 }"
             >
               Hormone-aware wellness
@@ -81,7 +82,7 @@ onBeforeUnmount(() => {
 
           <div class="space-y-4">
             <h1
-              class="text-foreground dark:text-accent"
+              class="text-foreground dark:text-blush-pink"
               :style="{
                 fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
                 fontWeight: 700,
@@ -108,32 +109,41 @@ onBeforeUnmount(() => {
           </div>
 
           <p
-            class="text-foreground/80 dark:text-accent/70 max-w-xl mx-auto lg:mx-0"
+            class="text-foreground/80 dark:text-blush-pink/70 max-w-xl mx-auto lg:mx-0"
             :style="{ fontSize: '1.25rem', lineHeight: 1.7 }"
           >
             Thryve helps you work with your hormones — not against them —
             through cycle-aware workouts, nutrition, and daily insights.
           </p>
 
-          <!-- CTAs -->
-          <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto lg:mx-0">
+          <!-- Email Capture Form -->
+          <form
+            @submit.prevent="handleSubmit"
+            class="flex flex-col gap-3 max-w-xl mx-auto lg:mx-0 sm:flex-row"
+          >
+            <Input
+              type="email"
+              placeholder="Enter your email"
+              :style="{ fontWeight: 600 }"
+              class="w-full h-13 border-foreground/30 placeholder:foreground/60 text-foreground dark:bg-white/10 backdrop-blur-sm dark:border-white/20 dark:text-white dark:placeholder:text-white/60 rounded-xl px-6 py-6 dark:focus:border-white focus:ring-primary"
+            />
             <Button
-              class="h-14 px-8 bg-primary hover:bg-[#5a3d5b] dark:bg-accent dark:hover:bg-white dark:text-dark-background text-white rounded-xl"
-              :style="{ fontSize: '1.125rem', fontWeight: 600 }"
+              class="h-13 px-8 cursor-pointer bg-primary hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl"
+              :style="{ fontSize: '1rem', fontWeight: 600 }"
             >
-              Get Early Access
+              Join Early Access
             </Button>
+          </form>
 
-            <Button
-              variant="outline"
-              class="h-14 px-8 bg-transparent hover:bg-primary/5 dark:hover:bg-accent/5 text-primary dark:text-accent border-primary/30 dark:border-accent/30 rounded-xl"
-              :style="{ fontSize: '1.125rem', fontWeight: 600 }"
-              @click="scrollToFeatures"
-            >
-              See how it works
-              <ArrowDown class="w-5 h-5 ml-2" />
-            </Button>
-          </div>
+          <Button
+            variant="ghost"
+            class="h-14 px-8 bg-transparent hover:bg-primary/5 dark:hover:bg-blush-pink/5 text-primary dark:text-blush-pink border-primary/30 dark:border-blush-pink/30 rounded-xl"
+            :style="{ fontSize: '1.125rem', fontWeight: 600 }"
+            @click="scrollToFeatures"
+          >
+            See how it works
+            <ArrowDown class="w-5 h-5 ml-2" />
+          </Button>
         </div>
 
         <!-- Right Content - Phone Mockup -->
@@ -148,18 +158,20 @@ onBeforeUnmount(() => {
           <div class="relative w-full max-w-sm">
             <!-- Phone mockup -->
             <div
-              class="relative bg-white dark:bg-[#251c29] rounded-3xl shadow-2xl p-3 border border-primary/10 dark:border-accent/10"
+              class="relative bg-white dark:bg-[#251c29] rounded-3xl shadow-2xl p-3 border border-primary/10 dark:border-blush-pink/10"
             >
               <div
-                class="aspect-[9/19] bg-linear-to-br from-accent dark:from-[#2d2534] via-white dark:via-[#251c29] to-secondary/30 dark:to-[#2a3432]/30 rounded-2xl overflow-hidden"
+                class="aspect-[9/19] bg-linear-to-br from-blush-pink dark:from-[#2d2534] via-white dark:via-[#251c29] to-secondary/30 dark:to-[#2a3432]/30 rounded-2xl overflow-hidden"
               >
                 <!-- Mock app interface -->
                 <div class="p-6 space-y-6">
                   <div class="flex items-center justify-between">
                     <div
-                      class="w-12 h-12 rounded-full bg-primary/10 dark:bg-accent/10 flex items-center justify-center"
+                      class="w-12 h-12 rounded-full bg-primary/10 dark:bg-blush-pink/10 flex items-center justify-center"
                     >
-                      <Sparkles class="w-6 h-6 text-primary dark:text-accent" />
+                      <Sparkles
+                        class="w-6 h-6 text-primary dark:text-blush-pink"
+                      />
                     </div>
                     <div
                       class="px-3 py-1 bg-secondary/50 dark:bg-[#7a9d89]/20 rounded-full"
@@ -176,12 +188,12 @@ onBeforeUnmount(() => {
                   <div>
                     <h3
                       :style="{ fontSize: '1.5rem', fontWeight: 600 }"
-                      class="text-foreground dark:text-accent mb-2"
+                      class="text-foreground dark:text-blush-pink mb-2"
                     >
                       Good morning!
                     </h3>
                     <p
-                      class="text-foreground/60 dark:text-accent/60"
+                      class="text-foreground/60 dark:text-blush-pink/60"
                       :style="{ fontSize: '0.875rem' }"
                     >
                       Day 8 of your cycle
@@ -189,11 +201,11 @@ onBeforeUnmount(() => {
                   </div>
 
                   <div
-                    class="bg-white/80 dark:bg-dark-background/40 rounded-2xl p-4 space-y-3 border border-primary/10 dark:border-accent/10"
+                    class="bg-white/80 dark:bg-dark-background/40 rounded-2xl p-4 space-y-3 border border-primary/10 dark:border-blush-pink/10"
                   >
                     <div class="flex items-center justify-between">
                       <span
-                        class="text-foreground/60 dark:text-accent/60"
+                        class="text-foreground/60 dark:text-blush-pink/60"
                         :style="{ fontSize: '0.875rem' }"
                       >
                         Energy Level
@@ -206,17 +218,17 @@ onBeforeUnmount(() => {
                       </span>
                     </div>
                     <div
-                      class="h-2 bg-accent dark:bg-[#2d2534] rounded-full overflow-hidden"
+                      class="h-2 bg-blush-pink dark:bg-[#2d2534] rounded-full overflow-hidden"
                     >
                       <div
-                        class="h-full w-3/4 bg-linear-to-r from-primary to-secondary dark:from-accent dark:to-[#7a9d89]"
+                        class="h-full w-3/4 bg-linear-to-r from-primary to-secondary dark:from-blush-pink dark:to-[#7a9d89]"
                       />
                     </div>
                   </div>
 
                   <div class="space-y-3">
                     <div
-                      class="bg-white/60 dark:bg-dark-background/30 rounded-xl p-4 border border-primary/10 dark:border-accent/10"
+                      class="bg-white/60 dark:bg-dark-background/30 rounded-xl p-4 border border-primary/10 dark:border-blush-pink/10"
                     >
                       <div
                         :style="{ fontSize: '0.75rem', fontWeight: 600 }"
@@ -226,13 +238,13 @@ onBeforeUnmount(() => {
                       </div>
                       <div
                         :style="{ fontSize: '0.875rem' }"
-                        class="text-foreground dark:text-accent"
+                        class="text-foreground dark:text-blush-pink"
                       >
                         Strength Training
                       </div>
                     </div>
                     <div
-                      class="bg-white/60 dark:bg-dark-background/30 rounded-xl p-4 border border-primary/10 dark:border-accent/10"
+                      class="bg-white/60 dark:bg-dark-background/30 rounded-xl p-4 border border-primary/10 dark:border-blush-pink/10"
                     >
                       <div
                         :style="{ fontSize: '0.75rem', fontWeight: 600 }"
@@ -242,7 +254,7 @@ onBeforeUnmount(() => {
                       </div>
                       <div
                         :style="{ fontSize: '0.875rem' }"
-                        class="text-foreground dark:text-accent"
+                        class="text-foreground dark:text-blush-pink"
                       >
                         Protein-rich meals
                       </div>

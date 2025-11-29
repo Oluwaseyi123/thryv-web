@@ -210,11 +210,11 @@ const handleSearchInput = (event: Event) => {
     >
       <!-- Hero Section -->
       <section
-        class="pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-accent/30 via-background to-secondary/20 dark:from-[#2d2534] dark:via-dark-background dark:to-[#2a3432]/20"
+        class="pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-blush-pink/30 via-background to-secondary/20 dark:from-[#2d2534] dark:via-dark-background dark:to-[#2a3432]/20"
       >
         <div class="container mx-auto max-w-6xl">
           <button
-            class="inline-flex items-center gap-2 mb-8 text-foreground dark:text-accent hover:text-primary dark:hover:text-white transition-colors group"
+            class="inline-flex items-center gap-2 mb-8 text-foreground dark:text-blush-pink hover:text-primary dark:hover:text-white transition-colors group"
             @click="handleBack"
           >
             <ArrowLeft
@@ -225,10 +225,10 @@ const handleSearchInput = (event: Event) => {
 
           <div class="text-center space-y-6 max-w-3xl mx-auto">
             <div
-              class="inline-block px-4 py-2 bg-white/60 dark:bg-[#251c29]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-accent/10"
+              class="inline-block px-4 py-2 bg-white/60 dark:bg-[#251c29]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-blush-pink/10"
             >
               <span
-                class="text-primary dark:text-accent"
+                class="text-primary dark:text-blush-pink"
                 :style="{ fontSize: '0.875rem', fontWeight: '600' }"
               >
                 THRYVE BLOG
@@ -236,7 +236,7 @@ const handleSearchInput = (event: Event) => {
             </div>
 
             <h1
-              class="text-foreground dark:text-accent"
+              class="text-foreground dark:text-blush-pink"
               :style="{
                 fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                 fontWeight: '700',
@@ -247,7 +247,7 @@ const handleSearchInput = (event: Event) => {
             </h1>
 
             <p
-              class="text-foreground/70 dark:text-accent/70"
+              class="text-foreground/70 dark:text-blush-pink/70"
               :style="{ fontSize: '1.25rem', lineHeight: '1.6' }"
             >
               Evidence-based insights on cycle syncing, hormonal health, and
@@ -257,12 +257,12 @@ const handleSearchInput = (event: Event) => {
             <!-- Search Bar -->
             <div class="relative max-w-md mx-auto mt-8">
               <Search
-                class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/40 dark:text-accent/40"
+                class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-foreground/40 dark:text-blush-pink/40"
               />
               <Input
                 type="text"
                 placeholder="Search articles..."
-                class="pl-12 pr-4 py-6 bg-white dark:bg-[#251c29] border-primary/20 dark:border-accent/20 rounded-xl focus:border-primary dark:focus:border-accent text-foreground dark:text-accent"
+                class="pl-12 pr-4 py-6 bg-white dark:bg-[#251c29] border-primary/20 dark:border-blush-pink/20 rounded-xl focus:border-primary dark:focus:border-blush-pink text-foreground dark:text-blush-pink"
                 :value="searchQuery"
                 @input="handleSearchInput"
               />
@@ -273,7 +273,7 @@ const handleSearchInput = (event: Event) => {
 
       <!-- Category Filter -->
       <section
-        class="py-8 px-4 sm:px-6 lg:px-8 border-b border-primary/10 dark:border-accent/10 bg-white/50 dark:bg-[#251c29]/50 backdrop-blur-sm sticky top-16 sm:top-20 z-40"
+        class="py-8 px-4 sm:px-6 lg:px-8 border-b border-primary/10 dark:border-blush-pink/10 bg-white/50 dark:bg-[#251c29]/50 backdrop-blur-sm sticky top-16 sm:top-20 z-40"
       >
         <div class="container mx-auto max-w-6xl">
           <div class="flex flex-wrap gap-3 justify-center">
@@ -283,8 +283,8 @@ const handleSearchInput = (event: Event) => {
               class="px-6 py-2.5 rounded-xl transition-all"
               :class="[
                 selectedCategory === category
-                  ? 'bg-primary dark:bg-accent text-white dark:text-dark-background shadow-lg'
-                  : 'bg-white dark:bg-[#251c29] text-foreground dark:text-accent border border-primary/20 dark:border-accent/20 hover:border-primary dark:hover:border-accent'
+                  ? 'bg-primary dark:bg-blush-pink text-white dark:text-dark-background shadow-lg'
+                  : 'bg-white dark:bg-[#251c29] text-foreground dark:text-blush-pink border border-primary/20 dark:border-blush-pink/20 hover:border-primary dark:hover:border-blush-pink'
               ]"
               :style="{
                 fontWeight: selectedCategory === category ? '600' : '500'
@@ -305,7 +305,7 @@ const handleSearchInput = (event: Event) => {
         <div class="container mx-auto max-w-6xl">
           <div class="mb-6">
             <h2
-              class="text-foreground dark:text-accent"
+              class="text-foreground dark:text-blush-pink"
               :style="{ fontSize: '1.5rem', fontWeight: '600' }"
             >
               Featured Article
@@ -313,11 +313,11 @@ const handleSearchInput = (event: Event) => {
           </div>
 
           <article
-            class="group bg-white dark:bg-[#251c29] rounded-2xl overflow-hidden border border-primary/10 dark:border-accent/10 hover:shadow-2xl transition-all duration-300"
+            class="group bg-white dark:bg-[#251c29] rounded-2xl overflow-hidden border border-primary/10 dark:border-blush-pink/10 hover:shadow-2xl transition-all duration-300"
           >
             <div class="grid md:grid-cols-2 gap-8">
               <div
-                class="relative aspect-4/3 md:aspect-auto overflow-hidden bg-accent/30 dark:bg-[#2d2534]/30"
+                class="relative aspect-4/3 md:aspect-auto overflow-hidden bg-blush-pink/30 dark:bg-[#2d2534]/30"
               >
                 <ImageWithFallback
                   :src="featuredArticle!.image"
@@ -340,7 +340,7 @@ const handleSearchInput = (event: Event) => {
               <div class="p-8 sm:p-10 flex flex-col justify-center">
                 <div class="inline-block mb-4">
                   <span
-                    class="px-3 py-1 bg-accent dark:bg-[#2d2534] text-primary dark:text-accent rounded-full"
+                    class="px-3 py-1 bg-blush-pink dark:bg-[#2d2534] text-primary dark:text-blush-pink rounded-full"
                     :style="{ fontSize: '0.75rem', fontWeight: '600' }"
                   >
                     FEATURED
@@ -348,7 +348,7 @@ const handleSearchInput = (event: Event) => {
                 </div>
 
                 <h3
-                  class="text-foreground dark:text-accent mb-4"
+                  class="text-foreground dark:text-blush-pink mb-4"
                   :style="{
                     fontSize: '2rem',
                     fontWeight: '700',
@@ -359,14 +359,14 @@ const handleSearchInput = (event: Event) => {
                 </h3>
 
                 <p
-                  class="text-foreground/70 dark:text-accent/70 mb-6"
+                  class="text-foreground/70 dark:text-blush-pink/70 mb-6"
                   :style="{ fontSize: '1.125rem', lineHeight: '1.7' }"
                 >
                   {{ featuredArticle!.excerpt }}
                 </p>
 
                 <div
-                  class="flex flex-wrap items-center gap-4 mb-6 text-foreground/60 dark:text-accent/60"
+                  class="flex flex-wrap items-center gap-4 mb-6 text-foreground/60 dark:text-blush-pink/60"
                 >
                   <div class="flex items-center gap-2">
                     <Calendar class="w-4 h-4" />
@@ -384,17 +384,17 @@ const handleSearchInput = (event: Event) => {
 
                 <div class="flex items-center gap-3">
                   <div
-                    class="w-10 h-10 rounded-full bg-linear-to-br from-primary to-accent"
+                    class="w-10 h-10 rounded-full bg-linear-to-br from-primary to-blush-pink"
                   />
                   <div>
                     <p
-                      class="text-foreground dark:text-accent"
+                      class="text-foreground dark:text-blush-pink"
                       :style="{ fontSize: '0.875rem', fontWeight: '600' }"
                     >
                       {{ featuredArticle!.author }}
                     </p>
                     <p
-                      class="text-foreground/50 dark:text-accent/50"
+                      class="text-foreground/50 dark:text-blush-pink/50"
                       :style="{ fontSize: '0.75rem' }"
                     >
                       Hormone Health Specialist
@@ -403,7 +403,7 @@ const handleSearchInput = (event: Event) => {
                 </div>
 
                 <Button
-                  class="mt-8 bg-primary hover:bg-[#5a3d5b] dark:bg-accent dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-8 py-6"
+                  class="mt-8 bg-primary hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-8 py-6"
                 >
                   Read Full Article
                 </Button>
@@ -419,7 +419,7 @@ const handleSearchInput = (event: Event) => {
           <template v-if="regularArticles.length > 0">
             <div class="mb-8 flex items-center justify-between">
               <h2
-                class="text-foreground dark:text-accent"
+                class="text-foreground dark:text-blush-pink"
                 :style="{ fontSize: '1.5rem', fontWeight: '600' }"
               >
                 {{
@@ -427,7 +427,7 @@ const handleSearchInput = (event: Event) => {
                 }}
               </h2>
               <p
-                class="text-foreground/60 dark:text-accent/60"
+                class="text-foreground/60 dark:text-blush-pink/60"
                 :style="{ fontSize: '0.875rem' }"
               >
                 {{ regularArticles.length }}
@@ -439,11 +439,11 @@ const handleSearchInput = (event: Event) => {
               <article
                 v-for="article in regularArticles"
                 :key="article.id"
-                class="group bg-white dark:bg-[#251c29] rounded-2xl overflow-hidden border border-primary/10 dark:border-accent/10 hover:shadow-xl hover:border-primary/20 dark:hover:border-accent/20 transition-all duration-300"
+                class="group bg-white dark:bg-[#251c29] rounded-2xl overflow-hidden border border-primary/10 dark:border-blush-pink/10 hover:shadow-xl hover:border-primary/20 dark:hover:border-blush-pink/20 transition-all duration-300"
               >
                 <!-- Image -->
                 <div
-                  class="relative aspect-16/10 overflow-hidden bg-accent/30 dark:bg-[#2d2534]/30"
+                  class="relative aspect-16/10 overflow-hidden bg-blush-pink/30 dark:bg-[#2d2534]/30"
                 >
                   <ImageWithFallback
                     :src="article.image"
@@ -477,7 +477,7 @@ const handleSearchInput = (event: Event) => {
                 <!-- Content -->
                 <div class="p-6 space-y-4">
                   <div
-                    class="flex items-center gap-3 text-foreground/50 dark:text-accent/50"
+                    class="flex items-center gap-3 text-foreground/50 dark:text-blush-pink/50"
                   >
                     <div class="flex items-center gap-1">
                       <Calendar class="w-3.5 h-3.5" />
@@ -495,7 +495,7 @@ const handleSearchInput = (event: Event) => {
                   </div>
 
                   <h3
-                    class="text-foreground dark:text-accent group-hover:text-primary dark:group-hover:text-white transition-colors"
+                    class="text-foreground dark:text-blush-pink group-hover:text-primary dark:group-hover:text-white transition-colors"
                     :style="{
                       fontSize: '1.125rem',
                       fontWeight: '600',
@@ -506,17 +506,17 @@ const handleSearchInput = (event: Event) => {
                   </h3>
 
                   <p
-                    class="text-foreground/70 dark:text-accent/70"
+                    class="text-foreground/70 dark:text-blush-pink/70"
                     :style="{ fontSize: '0.875rem', lineHeight: '1.6' }"
                   >
                     {{ article.excerpt }}
                   </p>
 
                   <div
-                    class="pt-2 border-t border-primary/10 dark:border-accent/10"
+                    class="pt-2 border-t border-primary/10 dark:border-blush-pink/10"
                   >
                     <p
-                      class="text-foreground/60 dark:text-accent/60"
+                      class="text-foreground/60 dark:text-blush-pink/60"
                       :style="{ fontSize: '0.75rem' }"
                     >
                       By {{ article.author }}
@@ -529,17 +529,17 @@ const handleSearchInput = (event: Event) => {
 
           <div v-else class="text-center py-16">
             <div
-              class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/50 dark:bg-[#2d2534]/50 mb-4"
+              class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blush-pink/50 dark:bg-[#2d2534]/50 mb-4"
             >
-              <Search class="w-8 h-8 text-primary dark:text-accent" />
+              <Search class="w-8 h-8 text-primary dark:text-blush-pink" />
             </div>
             <h3
-              class="text-foreground dark:text-accent mb-2"
+              class="text-foreground dark:text-blush-pink mb-2"
               :style="{ fontSize: '1.25rem', fontWeight: '600' }"
             >
               No articles found
             </h3>
-            <p class="text-foreground/60 dark:text-accent/60">
+            <p class="text-foreground/60 dark:text-blush-pink/60">
               Try adjusting your search or filter
             </p>
           </div>

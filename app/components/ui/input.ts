@@ -13,7 +13,7 @@ export const Input = defineComponent({
       type: [String, Number, null] as PropType<string | number | null>,
       default: ''
     },
-    // extra classes like React's className
+
     class: {
       type: [String, Array, Object] as PropType<any>,
       default: undefined

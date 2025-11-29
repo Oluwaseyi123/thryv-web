@@ -54,15 +54,15 @@ const navigateTo = (url: string) => {
 <template>
   <section
     id="blog"
-    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-secondary/20 via-white to-accent/30 dark:from-[#2a3432]/20 dark:via-dark-background dark:to-[#251c29]"
+    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-secondary/20 via-white to-blush-pink/30 dark:from-dark-background dark:via-dark-background dark:to-[#251c29]"
   >
     <div class="container mx-auto max-w-6xl">
       <div class="text-center mb-12 sm:mb-16 space-y-4">
         <div
-          class="inline-block px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-accent/10"
+          class="inline-block px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-blush-pink/10"
         >
           <span
-            class="text-primary dark:text-accent"
+            class="text-primary dark:text-blush-pink"
             :style="{ fontSize: '0.875rem', fontWeight: '600' }"
           >
             LEARN & THRIVE
@@ -70,7 +70,7 @@ const navigateTo = (url: string) => {
         </div>
 
         <h2
-          class="text-foreground dark:text-accent"
+          class="text-foreground dark:text-blush-pink"
           :style="{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             fontWeight: '700',
@@ -81,7 +81,7 @@ const navigateTo = (url: string) => {
         </h2>
 
         <p
-          class="text-foreground/70 dark:text-accent/70 max-w-2xl mx-auto"
+          class="text-foreground/70 dark:text-blush-pink/70 max-w-2xl mx-auto"
           :style="{ fontSize: '1.125rem' }"
         >
           Explore our library of articles on hormones, cycle syncing, nutrition,
@@ -93,11 +93,11 @@ const navigateTo = (url: string) => {
         <article
           v-for="(article, index) in articles"
           :key="index"
-          class="group bg-white dark:bg-[#251c29] rounded-2xl overflow-hidden border border-primary/10 dark:border-accent/10 hover:shadow-xl hover:border-primary/20 dark:hover:border-accent/20 transition-all duration-300"
+          class="group bg-white dark:bg-[#251c29] rounded-2xl overflow-hidden border border-primary/10 dark:border-blush-pink/10 hover:shadow-xl hover:border-primary/20 dark:hover:border-blush-pink/20 transition-all duration-300"
         >
           <!-- Image -->
           <div
-            class="relative aspect-16/10 overflow-hidden bg-accent/30 dark:bg-[#2d2534]/30"
+            class="relative aspect-16/10 overflow-hidden bg-blush-pink/30 dark:bg-[#2d2534]/30"
           >
             <ImageWithFallback
               :src="article.image"
@@ -131,7 +131,7 @@ const navigateTo = (url: string) => {
           <!-- Content -->
           <div class="p-6 space-y-3">
             <h3
-              class="text-foreground dark:text-accent group-hover:text-primary dark:group-hover:text-secondary transition-colors"
+              class="text-foreground dark:text-blush-pink group-hover:text-primary dark:group-hover:text-secondary transition-colors"
               :style="{
                 fontSize: '1.25rem',
                 fontWeight: '600',
@@ -142,7 +142,7 @@ const navigateTo = (url: string) => {
             </h3>
 
             <p
-              class="text-foreground/70 dark:text-accent/70"
+              class="text-foreground/70 dark:text-blush-pink/70"
               :style="{ fontSize: '0.875rem', lineHeight: '1.6' }"
             >
               {{ article.excerpt }}
@@ -150,7 +150,7 @@ const navigateTo = (url: string) => {
 
             <div class="flex items-center justify-between pt-3">
               <span
-                class="text-foreground/50 dark:text-accent/50"
+                class="text-foreground/50 dark:text-blush-pink/50"
                 :style="{ fontSize: '0.75rem' }"
               >
                 {{ article.readTime }}
@@ -177,7 +177,7 @@ const navigateTo = (url: string) => {
 
       <div class="text-center">
         <button
-          class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-[#251c29] hover:bg-accent/50 dark:hover:bg-[#2d2534] text-primary dark:text-secondary rounded-xl border border-primary/20 dark:border-accent/20 hover:border-primary/40 dark:hover:border-accent/40 transition-all group"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-[#251c29] hover:bg-blush-pink/50 dark:hover:bg-[#2d2534] text-primary dark:text-secondary rounded-xl border border-primary/20 dark:border-blush-pink/20 hover:border-primary/40 dark:hover:border-blush-pink/40 transition-all group"
           @click="navigateTo('/blog')"
         >
           <span

@@ -59,10 +59,10 @@ const faqs = [
       <!-- Header -->
       <div class="text-center mb-12 sm:mb-16 space-y-4">
         <div
-          class="inline-block px-4 py-2 bg-accent/50 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-accent/10"
+          class="inline-block px-4 py-2 bg-blush-pink/50 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-blush-pink/10"
         >
           <span
-            class="text-primary dark:text-accent"
+            class="text-primary dark:text-blush-pink"
             :style="{ fontSize: '0.875rem', fontWeight: '600' }"
           >
             FAQs
@@ -70,7 +70,7 @@ const faqs = [
         </div>
 
         <h2
-          class="text-foreground dark:text-accent"
+          class="text-foreground dark:text-blush-pink"
           :style="{
             fontSize: 'clamp(2rem, 4vw, 3rem)',
             fontWeight: '700'
@@ -80,7 +80,7 @@ const faqs = [
         </h2>
 
         <p
-          class="text-foreground/70 dark:text-accent/70 max-w-2xl mx-auto"
+          class="text-foreground/70 dark:text-blush-pink/70 max-w-2xl mx-auto"
           :style="{ fontSize: '1.125rem' }"
         >
           Everything you need to know about Thryve.
@@ -93,16 +93,16 @@ const faqs = [
           v-for="(faq, index) in faqs"
           :key="index"
           :value="`item-${index}`"
-          class="bg-linear-to-br from-white to-accent/10 dark:from-[#251c29] dark:to-[#2d2534]/30 border border-primary/10 dark:border-accent/10 rounded-xl px-6 data-[state=open]:shadow-lg dark:data-[state=open]:shadow-2xl dark:data-[state=open]:shadow-accent/5"
+          class="bg-linear-to-br from-white to-blush-pink/10 dark:from-[#251c29] dark:to-[#2d2534]/30 border border-primary/10 dark:border-blush-pink/10 rounded-xl px-6 data-[state=open]:shadow-lg dark:data-[state=open]:shadow-2xl dark:data-[state=open]:shadow-blush-pink/5"
         >
           <AccordionTrigger
-            class="text-left text-foreground dark:text-accent hover:text-primary dark:hover:text-secondary hover:no-underline py-5"
+            class="text-left text-foreground dark:text-blush-pink hover:text-primary dark:hover:text-secondary hover:no-underline py-5"
             :style="{ fontSize: '1.125rem', fontWeight: '600' }"
           >
             {{ faq.label }}
           </AccordionTrigger>
           <AccordionContent
-            class="text-foreground/80 dark:text-accent/80 pb-5"
+            class="text-foreground/80 dark:text-blush-pink/80 pb-5"
             :style="{ fontSize: '1rem', lineHeight: '1.7' }"
           >
             {{ faq.content }}
@@ -113,7 +113,7 @@ const faqs = [
       <!-- Still have questions CTA -->
       <div class="mt-12 text-center">
         <p
-          class="text-foreground/70 dark:text-accent/70 mb-4"
+          class="text-foreground/70 dark:text-blush-pink/70 mb-4"
           :style="{ fontSize: '1rem' }"
         >
           Still have questions?

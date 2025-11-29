@@ -5,7 +5,7 @@ export default defineAppConfig({
       // bgColorLight: 'pink',
       // primary: 'orange',
       // neutral: 'neutral',
-      // accent: 'purple'
-    },
-  },
-});
+      // blush-pink: 'purple'
+    }
+  }
+})

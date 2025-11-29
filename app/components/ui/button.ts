@@ -11,11 +11,11 @@ export const buttonVariants = cva(
         destructive:
           'bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
         outline:
-          'border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
+          'border bg-background text-foreground hover:bg-blush-pink hover:text-blush-pink-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
         secondary:
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost:
-          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+          'hover:bg-blush-pink hover:text-blush-pink-foreground dark:hover:bg-blush-pink/50',
         link: 'text-primary underline-offset-4 hover:underline'
       },
       size: {
@@ -69,8 +69,8 @@ export const Button = defineComponent({
         {
           ...attrs,
           'data-slot': 'button',
-          'type': props.type,
-          'class': classes.value
+          type: props.type,
+          class: classes.value
         },
         slots.default ? slots.default() : []
       )

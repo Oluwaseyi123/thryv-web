@@ -29,7 +29,8 @@ useSeoMeta({
       <WhySection />
       <FeaturesSection />
       <ScienceSection />
-      <CommunitySection />
+      <!-- <CommunitySection /> -->
+      <CommunitySection2 />
       <FaqSection />
       <BlogPreview />
     </NuxtLayout>

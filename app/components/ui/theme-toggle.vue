@@ -35,10 +35,10 @@ const toggleTheme = () => {
 <template>
   <Button
     aria-label="Toggle theme"
-    class="w-10 h-10 rounded-xl bg-accent dark:bg-[#2d2534] border border-primary/10 dark:border-accent/10 flex items-center justify-center hover:bg-primary/10 dark:hover:bg-accent/10 transition-colors"
+    class="w-10 h-10 rounded-xl bg-blush-pink dark:bg-[#2d2534] border border-primary/10 dark:border-blush-pink/10 flex items-center justify-center hover:bg-primary/10 dark:hover:bg-blush-pink/10 transition-colors"
     @click="toggleTheme"
   >
-    <Sun v-if="isDark" class="w-5 h-5 text-accent" />
+    <Sun v-if="isDark" class="w-5 h-5 text-blush-pink" />
     <Moon v-else class="w-5 h-5 text-primary" />
   </Button>
 </template>

@@ -37,7 +37,7 @@ const currentYear = new Date().getFullYear()
 
 <template>
   <footer
-    class="bg-linear-to-br from-primary to-[#5a3d5b] dark:from-dark-background dark:to-[#251c29] text-white dark:text-accent border-t border-white/10 dark:border-accent/10"
+    class="bg-linear-to-br from-primary to-[#5a3d5b] dark:from-dark-background dark:to-[#251c29] text-white dark:text-blush-pink border-t border-white/10 dark:border-blush-pink/10"
   >
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <!-- Main Footer Content -->
@@ -48,16 +48,16 @@ const currentYear = new Date().getFullYear()
         <div class="col-span-1 sm:col-span-2 lg:col-span-2">
           <div class="flex items-center gap-2 mb-4">
             <div
-              class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 dark:bg-accent/10 backdrop-blur-sm"
+              class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 dark:bg-blush-pink/10 backdrop-blur-sm"
             >
-              <Moon class="w-5 h-5 text-white dark:text-accent" />
+              <Moon class="w-5 h-5 text-white dark:text-blush-pink" />
             </div>
             <span :style="{ fontSize: '1.5rem', fontWeight: '700' }"
               >Thryve</span
             >
           </div>
           <p
-            class="text-white/90 dark:text-accent/80 mb-6 max-w-md"
+            class="text-white/90 dark:text-blush-pink/80 mb-6 max-w-md"
             :style="{ lineHeight: '1.7' }"
           >
             Hormone-aware wellness and cycle-syncing app designed to help women
@@ -71,7 +71,7 @@ const currentYear = new Date().getFullYear()
               :key="index"
               :href="social.href"
               :aria-label="social.label"
-              class="w-10 h-10 rounded-full bg-white/10 dark:bg-accent/10 hover:bg-white/20 dark:hover:bg-accent/20 backdrop-blur-sm flex items-center justify-center transition-colors"
+              class="w-10 h-10 rounded-full bg-white/10 dark:bg-blush-pink/10 hover:bg-white/20 dark:hover:bg-blush-pink/20 backdrop-blur-sm flex items-center justify-center transition-colors"
             >
               <component :is="social.icon" class="w-5 h-5" />
             </a>
@@ -97,7 +97,7 @@ const currentYear = new Date().getFullYear()
             >
               <a
                 :href="link.href"
-                class="text-white/80 dark:text-accent/80 hover:text-white dark:hover:text-accent transition-colors"
+                class="text-white/80 dark:text-blush-pink/80 hover:text-white dark:hover:text-blush-pink transition-colors"
                 :style="{ fontSize: '0.875rem' }"
               >
                 {{ link.name }}
@@ -125,7 +125,7 @@ const currentYear = new Date().getFullYear()
             >
               <a
                 :href="link.href"
-                class="text-white/80 dark:text-accent/80 hover:text-white dark:hover:text-accent transition-colors"
+                class="text-white/80 dark:text-blush-pink/80 hover:text-white dark:hover:text-blush-pink transition-colors"
                 :style="{ fontSize: '0.875rem' }"
               >
                 {{ link.name }}
@@ -136,19 +136,19 @@ const currentYear = new Date().getFullYear()
       </div>
 
       <!-- Divider -->
-      <div class="border-t border-white/10 dark:border-accent/10 mb-8" />
+      <div class="border-t border-white/10 dark:border-blush-pink/10 mb-8" />
 
       <!-- Bottom Footer -->
       <div class="flex flex-col md:flex-row items-center justify-between gap-4">
         <p
-          class="text-white/70 dark:text-accent/70 text-center md:text-left"
+          class="text-white/70 dark:text-blush-pink/70 text-center md:text-left"
           :style="{ fontSize: '0.875rem' }"
         >
           © {{ currentYear }} Thryve. All rights reserved.
         </p>
 
         <p
-          class="text-white/60 dark:text-accent/60 text-center md:text-right max-w-2xl"
+          class="text-white/60 dark:text-blush-pink/60 text-center md:text-right max-w-2xl"
           :style="{ fontSize: '0.75rem', fontStyle: 'italic' }"
         >
           Thryve is for education and wellness support, not medical diagnosis.

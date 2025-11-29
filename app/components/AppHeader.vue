@@ -17,19 +17,19 @@ const setActiveSection = (section: string) => {
 
 <template>
   <nav
-    class="fixed top-0 left-0 right-0 z-50 bg-background/95 dark:bg-dark-background/95 backdrop-blur-md border-b border-primary/10 dark:border-accent/10"
+    class="fixed top-0 left-0 right-0 z-50 bg-background/95 dark:bg-dark-background/95 backdrop-blur-md border-b border-primary/10 dark:border-blush-pink/10"
   >
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 sm:h-20">
         <!-- Logo -->
         <div class="flex items-center gap-2">
           <div
-            class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-linear-to-br from-primary to-accent"
+            class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-linear-to-br from-primary to-blush-pink"
           >
             <Moon class="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </div>
           <span
-            class="text-primary dark:text-accent"
+            class="text-primary dark:text-blush-pink"
             :style="{ fontSize: '1.25rem', fontWeight: '700' }"
           >
             Thryve
@@ -43,15 +43,15 @@ const setActiveSection = (section: string) => {
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'about'
-                ? 'text-primary dark:text-accent'
-                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
+                ? 'text-primary dark:text-blush-pink'
+                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
             @click="setActiveSection('about')"
           >
             About
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
                 activeSection === 'about' ? 'w-full' : 'w-0'
               ]"
             />
@@ -61,15 +61,15 @@ const setActiveSection = (section: string) => {
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'features'
-                ? 'text-primary dark:text-accent'
-                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
+                ? 'text-primary dark:text-blush-pink'
+                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
             @click="setActiveSection('features')"
           >
             Features
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
                 activeSection === 'features' ? 'w-full' : 'w-0'
               ]"
             />
@@ -79,15 +79,15 @@ const setActiveSection = (section: string) => {
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'science'
-                ? 'text-primary dark:text-accent'
-                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
+                ? 'text-primary dark:text-blush-pink'
+                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
             @click="setActiveSection('science')"
           >
             Science
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
                 activeSection === 'science' ? 'w-full' : 'w-0'
               ]"
             />
@@ -97,15 +97,15 @@ const setActiveSection = (section: string) => {
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'community'
-                ? 'text-primary dark:text-accent'
-                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
+                ? 'text-primary dark:text-blush-pink'
+                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
             @click="setActiveSection('community')"
           >
             Community
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
                 activeSection === 'community' ? 'w-full' : 'w-0'
               ]"
             />
@@ -115,15 +115,15 @@ const setActiveSection = (section: string) => {
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'faqs'
-                ? 'text-primary dark:text-accent'
-                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
+                ? 'text-primary dark:text-blush-pink'
+                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
             @click="setActiveSection('faqs')"
           >
             FAQs
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
                 activeSection === 'faqs' ? 'w-full' : 'w-0'
               ]"
             />
@@ -133,15 +133,15 @@ const setActiveSection = (section: string) => {
             :class="[
               'relative transition-all duration-300 font-medium pb-1',
               activeSection === 'blog' || route.path.startsWith('/blog')
-                ? 'text-primary dark:text-accent'
-                : 'text-foreground dark:text-accent/80 hover:text-primary dark:hover:text-accent'
+                ? 'text-primary dark:text-blush-pink'
+                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
             @click="setActiveSection('blog')"
           >
             Blog
             <span
               :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-accent transition-all duration-300 ease-out',
+                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
                 activeSection === 'blog' || route.path.startsWith('/blog')
                   ? 'w-full'
                   : 'w-0'
@@ -153,10 +153,10 @@ const setActiveSection = (section: string) => {
         <!-- Right side - CTA + Theme Toggle -->
         <div class="flex items-center gap-3">
           <Button
-            class="bg-primary hover:bg-[#5a3d5b] dark:bg-accent dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-4 sm:px-6"
+            class="bg-primary h-11 hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-4 sm:px-6"
             :style="{ fontSize: '0.95rem', fontWeight: '600' }"
           >
-            Get Early Access
+            Join Early Access
           </Button>
           <ThemeToggle />
         </div>

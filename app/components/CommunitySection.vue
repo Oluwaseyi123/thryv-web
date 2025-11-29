@@ -37,15 +37,7 @@ const handleSubmit = () => {
   >
     <!-- Gradient Background -->
     <div
-      class="absolute inset-0 bg-linear-to-br from-primary via-[#5a3d5b] to-primary dark:from-[#251c29] dark:via-dark-background dark:to-[#2a3432]"
-    />
-
-    <!-- Decorative elements -->
-    <div
-      class="absolute top-0 left-0 w-96 h-96 bg-accent/10 dark:bg-accent/5 rounded-full blur-3xl"
-    />
-    <div
-      class="absolute bottom-0 right-0 w-96 h-96 bg-secondary/10 dark:bg-[#7a9d89]/5 rounded-full blur-3xl"
+      class="absolute inset-0 bg-linear-to-br from-primary via-[#5a3d5b] to-primary dark:from-[#251c29] dark:via-dark-background dark:to-dark-background"
     />
 
     <div class="container mx-auto max-w-4xl relative">
@@ -53,7 +45,7 @@ const handleSubmit = () => {
         <!-- Header -->
         <div class="space-y-4">
           <h2
-            class="text-white dark:text-accent"
+            class="text-white dark:text-blush-pink"
             :style="{
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               fontWeight: '700'
@@ -62,7 +54,7 @@ const handleSubmit = () => {
             Join the Thryve community
           </h2>
           <p
-            class="text-white/90 dark:text-accent/80 max-w-2xl mx-auto"
+            class="text-white/90 dark:text-blush-pink/80 max-w-2xl mx-auto"
             :style="{ fontSize: '1.25rem', lineHeight: '1.7' }"
           >
             Be part of building the future of hormone-aware wellness. Get early
@@ -76,14 +68,14 @@ const handleSubmit = () => {
           <div
             v-for="(benefit, index) in benefits"
             :key="index"
-            class="flex items-center gap-3 px-5 py-3 bg-white/10 dark:bg-accent/5 backdrop-blur-sm rounded-full border border-white/20 dark:border-accent/10"
+            class="flex items-center gap-3 px-5 py-3 bg-white/10 dark:bg-blush-pink/5 backdrop-blur-sm rounded-full border border-white/20 dark:border-blush-pink/10"
           >
             <component
               :is="benefit.icon"
-              class="w-5 h-5 text-white dark:text-accent"
+              class="w-5 h-5 text-white dark:text-blush-pink"
             />
             <span
-              class="text-white dark:text-accent"
+              class="text-white dark:text-blush-pink"
               :style="{ fontSize: '0.875rem', fontWeight: '500' }"
             >
               {{ benefit.text }}
@@ -99,19 +91,19 @@ const handleSubmit = () => {
               type="email"
               placeholder="Enter your email address"
               required
-              class="flex-1 h-14 px-5 bg-white/95 dark:bg-accent/95 border-white/40 dark:border-accent/40 text-foreground placeholder:text-foreground/50 rounded-xl focus:border-white dark:focus:border-accent focus:ring-white dark:focus:ring-accent"
+              class="flex-1 h-14 px-5 bg-white/95 dark:bg-blush-pink/95 border-white/40 dark:border-blush-pink/40 text-foreground placeholder:text-foreground/50 rounded-xl focus:border-white dark:focus:border-blush-pink focus:ring-white dark:focus:ring-blush-pink"
               :style="{ fontSize: '1rem' }"
             />
             <button
               type="submit"
-              class="h-14 px-8 bg-white hover:bg-white/90 dark:bg-accent dark:hover:bg-white text-primary dark:text-dark-background rounded-xl whitespace-nowrap"
+              class="h-14 px-8 bg-white hover:bg-white/90 dark:bg-blush-pink dark:hover:bg-white text-primary dark:text-dark-background rounded-xl whitespace-nowrap"
               :style="{ fontSize: '1rem', fontWeight: '600' }"
             >
               Join the waitlist
             </button>
           </div>
           <p
-            class="text-white/70 dark:text-accent/70"
+            class="text-white/70 dark:text-blush-pink/70"
             :style="{ fontSize: '0.75rem' }"
           >
             No spam. Unsubscribe anytime. We respect your privacy.
@@ -125,19 +117,19 @@ const handleSubmit = () => {
               <div
                 v-for="i in 5"
                 :key="i"
-                class="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-secondary border-2 border-white dark:border-dark-background"
+                class="w-12 h-12 rounded-full bg-gradient-to-br from-blush-pink to-secondary border-2 border-white dark:border-dark-background"
               />
             </div>
           </div>
           <p
-            class="text-white/90 dark:text-accent/90"
+            class="text-white/90 dark:text-blush-pink/90"
             :style="{ fontSize: '1rem' }"
           >
             <span :style="{ fontWeight: '700' }">10,000+</span> women already on
             the waitlist
           </p>
           <p
-            class="text-white/70 dark:text-accent/70 mt-2"
+            class="text-white/70 dark:text-blush-pink/70 mt-2"
             :style="{ fontSize: '0.875rem', fontStyle: 'italic' }"
           >
             "Coming soon: stories from our beta users"
