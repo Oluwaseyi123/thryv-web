@@ -33,11 +33,10 @@ const handleSubmit = () => {
 </script>
 
 <template>
-  <section class="relative overflow-hidden py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-    <!-- Gradient Background -->
-    <!-- <div
-      class="absolute inset-0 bg-gradient-to-br from-[#F7E6E1] via-[#CFE1D4]/30 to-[#F7E6E1] dark:from-[#251c29] dark:via-dark-background dark:to-dark-background"
-    /> -->
+  <section
+    class="relative overflow-hidden py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
+    id="community"
+  >
     <!-- Gradient Background -->
     <div
       class="absolute inset-0 bg-linear-to-br from-primary via-[#5a3d5b] to-primary dark:from-[#251c29] dark:via-dark-background dark:to-dark-background"

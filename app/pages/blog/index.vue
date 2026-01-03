@@ -1,156 +1,20 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { ArrowLeft, Search, Calendar, Clock, Tag } from 'lucide-vue-next'
 import ImageWithFallback from '@/components/ui/img-with-fallback'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { useArticlesStore } from '@/stores/articlesStore'
+import { storeToRefs } from 'pinia'
+import BlogCard from '@/components/BlogCard.vue'
 
 definePageMeta({
   layout: 'default'
 })
 
-type Article = {
-  id: number
-  category: string
-  title: string
-  excerpt: string
-  content: string
-  image: string
-  readTime: string
-  date: string
-  author: string
-  categoryColor: string
-  featured?: boolean
-}
-
-const allArticles: Article[] = [
-  {
-    id: 1,
-    category: 'Hormones',
-    title: "Understanding Your Hormonal Cycle: A Beginner's Guide",
-    excerpt:
-      'Learn how estrogen, progesterone, and other hormones influence your energy, mood, and physical performance throughout your cycle.',
-    content: 'Comprehensive guide to understanding hormones...',
-    image:
-      'https://images.unsplash.com/photo-1687180948580-c4892a9a82c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWxsbmVzcyUyMHdvbWVuJTIwbWVkaXRhdGlvbnxlbnwxfHx8fDE3NjM0NjAwNjJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    readTime: '5 min read',
-    date: 'Nov 20, 2025',
-    author: 'Dr. Sarah Chen',
-    categoryColor: '#6E4C6F',
-    featured: true
-  },
-  {
-    id: 2,
-    category: 'Cycle Syncing',
-    title: 'The Ultimate Guide to Cycle-Based Training',
-    excerpt:
-      'Discover how to adjust your workouts for each phase of your cycle to maximize strength, recovery, and overall performance.',
-    content: 'Complete training guide...',
-    image:
-      'https://images.unsplash.com/photo-1758274525134-4b1e9cc67dbb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b2dhJTIwd29tYW4lMjBzdHJlbmd0aHxlbnwxfHx8fDE3NjM0NjAwNjJ8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    readTime: '8 min read',
-    date: 'Nov 18, 2025',
-    author: 'Emma Rodriguez',
-    categoryColor: '#CFE1D4'
-  },
-  {
-    id: 3,
-    category: 'PCOS',
-    title: 'Managing PCOS: Nutrition Tips for Each Cycle Phase',
-    excerpt:
-      'Expert-backed nutrition strategies to support hormone balance and reduce PCOS symptoms through cycle-aware eating.',
-    content: 'PCOS nutrition strategies...',
-    image:
-      'https://images.unsplash.com/photo-1670164747721-d3500ef757a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGh5JTIwbnV0cml0aW9uJTIwZm9vZHxlbnwxfHx8fDE3NjMzNzc3ODR8MA&ixlib=rb-4.1.0&q=80&w=1080',
-    readTime: '6 min read',
-    date: 'Nov 15, 2025',
-    author: 'Dr. Maya Patel',
-    categoryColor: '#F7E6E1'
-  },
-  {
-    id: 4,
-    category: 'Hormones',
-    title: 'How Cortisol Affects Your Menstrual Cycle',
-    excerpt:
-      'Understanding the stress hormone and its impact on your cycle, plus practical strategies for stress management.',
-    content: 'Cortisol and cycle connection...',
-    image:
-      'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1080',
-    readTime: '7 min read',
-    date: 'Nov 12, 2025',
-    author: 'Dr. Sarah Chen',
-    categoryColor: '#6E4C6F'
-  },
-  {
-    id: 5,
-    category: 'Nutrition',
-    title: 'Eating for Your Follicular Phase: Energy-Boosting Foods',
-    excerpt:
-      'Optimize your nutrition during the follicular phase with these hormone-supportive foods and meal ideas.',
-    content: 'Follicular phase nutrition guide...',
-    image:
-      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1080',
-    readTime: '5 min read',
-    date: 'Nov 10, 2025',
-    author: 'Emma Rodriguez',
-    categoryColor: '#CFE1D4'
-  },
-  {
-    id: 6,
-    category: 'Cycle Syncing',
-    title: 'Your Luteal Phase Survival Guide',
-    excerpt:
-      'Navigate PMS symptoms and support your body during the luteal phase with evidence-based strategies.',
-    content: 'Luteal phase support guide...',
-    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1080',
-    readTime: '6 min read',
-    date: 'Nov 8, 2025',
-    author: 'Dr. Maya Patel',
-    categoryColor: '#CFE1D4'
-  },
-  {
-    id: 7,
-    category: 'PCOS',
-    title: 'Natural Supplements for PCOS: What Actually Works',
-    excerpt:
-      'A science-backed look at supplements that may help manage PCOS symptoms and support hormonal balance.',
-    content: 'PCOS supplements research...',
-    image:
-      'https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?w=1080',
-    readTime: '9 min read',
-    date: 'Nov 5, 2025',
-    author: 'Dr. Sarah Chen',
-    categoryColor: '#F7E6E1'
-  },
-  {
-    id: 8,
-    category: 'Wellness',
-    title: 'Sleep and Your Cycle: Why Rest Matters More Than You Think',
-    excerpt:
-      'Discover how sleep patterns change throughout your cycle and how to optimize rest for hormonal health.',
-    content: 'Sleep and hormones connection...',
-    image:
-      'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=1080',
-    readTime: '7 min read',
-    date: 'Nov 3, 2025',
-    author: 'Emma Rodriguez',
-    categoryColor: '#CFE1D4'
-  },
-  {
-    id: 9,
-    category: 'Nutrition',
-    title: 'Anti-Inflammatory Foods for Hormone Balance',
-    excerpt:
-      'Learn which foods help reduce inflammation and support healthy hormone production throughout your cycle.',
-    content: 'Anti-inflammatory nutrition...',
-    image:
-      'https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=1080',
-    readTime: '6 min read',
-    date: 'Nov 1, 2025',
-    author: 'Dr. Maya Patel',
-    categoryColor: '#CFE1D4'
-  }
-]
+const articlesStore = useArticlesStore()
+const { articles } = storeToRefs(articlesStore)
+const { getArticles } = articlesStore
 
 const categories = [
   'All',
@@ -168,8 +32,12 @@ const props = defineProps<{
 const selectedCategory = ref<string>('All')
 const searchQuery = ref<string>('')
 
+onMounted(async () => {
+  await getArticles()
+})
+
 const filteredArticles = computed(() =>
-  allArticles.filter((article) => {
+  articles.value.filter((article) => {
     const matchesCategory =
       selectedCategory.value === 'All' ||
       article.category === selectedCategory.value
@@ -181,7 +49,7 @@ const filteredArticles = computed(() =>
   })
 )
 
-const featuredArticle = computed(() => allArticles.find((a) => a.featured))
+const featuredArticle = computed(() => articles.value.find((a) => a.featured))
 
 const regularArticles = computed(() =>
   filteredArticles.value.filter((a) => !a.featured)
@@ -404,6 +272,7 @@ const handleSearchInput = (event: Event) => {
 
                 <Button
                   class="mt-8 bg-primary hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-8 py-6"
+                  @click="navigateTo(featuredArticle!.blogUrl || '/blog')"
                 >
                   Read Full Article
                 </Button>
@@ -435,96 +304,7 @@ const handleSearchInput = (event: Event) => {
               </p>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <article
-                v-for="article in regularArticles"
-                :key="article.id"
-                class="group bg-white dark:bg-[#251c29] rounded-2xl overflow-hidden border border-primary/10 dark:border-blush-pink/10 hover:shadow-xl hover:border-primary/20 dark:hover:border-blush-pink/20 transition-all duration-300"
-              >
-                <!-- Image -->
-                <div
-                  class="relative aspect-16/10 overflow-hidden bg-blush-pink/30 dark:bg-[#2d2534]/30"
-                >
-                  <ImageWithFallback
-                    :src="article.image"
-                    :alt="article.title"
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div
-                    class="absolute top-4 left-4 px-3 py-1 rounded-full backdrop-blur-sm"
-                    :style="{
-                      backgroundColor:
-                        article.categoryColor === '#6E4C6F'
-                          ? 'rgba(110, 76, 111, 0.9)'
-                          : article.categoryColor === '#CFE1D4'
-                            ? 'rgba(207, 225, 212, 0.9)'
-                            : 'rgba(247, 230, 225, 0.9)'
-                    }"
-                  >
-                    <span
-                      :style="{ fontSize: '0.75rem', fontWeight: '600' }"
-                      :class="
-                        article.categoryColor === '#6E4C6F'
-                          ? 'text-white'
-                          : 'text-foreground'
-                      "
-                    >
-                      {{ article.category }}
-                    </span>
-                  </div>
-                </div>
-
-                <!-- Content -->
-                <div class="p-6 space-y-4">
-                  <div
-                    class="flex items-center gap-3 text-foreground/50 dark:text-blush-pink/50"
-                  >
-                    <div class="flex items-center gap-1">
-                      <Calendar class="w-3.5 h-3.5" />
-                      <span :style="{ fontSize: '0.75rem' }">
-                        {{ article.date }}
-                      </span>
-                    </div>
-                    <span>•</span>
-                    <div class="flex items-center gap-1">
-                      <Clock class="w-3.5 h-3.5" />
-                      <span :style="{ fontSize: '0.75rem' }">
-                        {{ article.readTime }}
-                      </span>
-                    </div>
-                  </div>
-
-                  <h3
-                    class="text-foreground dark:text-blush-pink group-hover:text-primary dark:group-hover:text-white transition-colors"
-                    :style="{
-                      fontSize: '1.125rem',
-                      fontWeight: '600',
-                      lineHeight: '1.4'
-                    }"
-                  >
-                    {{ article.title }}
-                  </h3>
-
-                  <p
-                    class="text-foreground/70 dark:text-blush-pink/70"
-                    :style="{ fontSize: '0.875rem', lineHeight: '1.6' }"
-                  >
-                    {{ article.excerpt }}
-                  </p>
-
-                  <div
-                    class="pt-2 border-t border-primary/10 dark:border-blush-pink/10"
-                  >
-                    <p
-                      class="text-foreground/60 dark:text-blush-pink/60"
-                      :style="{ fontSize: '0.75rem' }"
-                    >
-                      By {{ article.author }}
-                    </p>
-                  </div>
-                </div>
-              </article>
-            </div>
+            <BlogCard :articles="regularArticles" />
           </template>
 
           <div v-else class="text-center py-16">

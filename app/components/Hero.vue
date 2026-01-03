@@ -54,6 +54,10 @@ onMounted(() => {
   })
 })
 
+const handleSubmit = () => {
+  // Handle email submission logic here
+}
+
 onBeforeUnmount(() => {
   if (intervalId) clearInterval(intervalId)
   if (timeoutId) clearTimeout(timeoutId)
@@ -135,15 +139,15 @@ onBeforeUnmount(() => {
             </Button>
           </form>
 
-          <Button
-            variant="ghost"
-            class="h-14 px-8 bg-transparent hover:bg-primary/5 dark:hover:bg-blush-pink/5 text-primary dark:text-blush-pink border-primary/30 dark:border-blush-pink/30 rounded-xl"
-            :style="{ fontSize: '1.125rem', fontWeight: 600 }"
+          <div
+            class="flex items-center hover:text-primary cursor-pointer h-14 transition-all duration-300 bg-transparent text-primary dark:text-blush-pink border-primary/30 dark:border-blush-pink/30 rounded-xl"
             @click="scrollToFeatures"
           >
             See how it works
-            <ArrowDown class="w-5 h-5 ml-2" />
-          </Button>
+            <ArrowDown
+              class="w-4 h-4 ml-2 hover:scale-110 transition-all duration-300"
+            />
+          </div>
         </div>
 
         <!-- Right Content - Phone Mockup -->

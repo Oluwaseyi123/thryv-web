@@ -1,17 +1,28 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { Moon } from 'lucide-vue-next'
+import { useRoute, useRouter } from 'vue-router'
 
 import { Button } from './ui/button'
 import ThemeToggle from './ui/theme-toggle.vue'
 
 const route = useRoute()
+const router = useRouter()
 const activeSection = ref('')
 
-const setActiveSection = (section: string) => {
-  console.log(route)
-
-  activeSection.value = section
+const scrollToSection = (section: string) => {
+  if (route.path !== '/') {
+    router.push('/').then(() => {
+      setTimeout(() => {
+        scrollToSection(section)
+      }, 300)
+    })
+    return
+  } else {
+    activeSection.value = section
+    const element = document.getElementById(section)
+    element?.scrollIntoView({ behavior: 'smooth' })
+  }
 }
 </script>
 
@@ -38,15 +49,15 @@ const setActiveSection = (section: string) => {
 
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center gap-8">
-          <a
-            href="/#about"
+          <button
+            type="button"
             :class="[
-              'relative transition-all duration-300 font-medium pb-1',
+              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
               activeSection === 'about'
                 ? 'text-primary dark:text-blush-pink'
                 : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
-            @click="setActiveSection('about')"
+            @click="scrollToSection('about')"
           >
             About
             <span
@@ -55,16 +66,16 @@ const setActiveSection = (section: string) => {
                 activeSection === 'about' ? 'w-full' : 'w-0'
               ]"
             />
-          </a>
-          <a
-            href="/#features"
+          </button>
+          <button
+            type="button"
             :class="[
-              'relative transition-all duration-300 font-medium pb-1',
+              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
               activeSection === 'features'
                 ? 'text-primary dark:text-blush-pink'
                 : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
-            @click="setActiveSection('features')"
+            @click="scrollToSection('features')"
           >
             Features
             <span
@@ -73,16 +84,16 @@ const setActiveSection = (section: string) => {
                 activeSection === 'features' ? 'w-full' : 'w-0'
               ]"
             />
-          </a>
-          <a
-            href="/#science"
+          </button>
+          <button
+            type="button"
             :class="[
-              'relative transition-all duration-300 font-medium pb-1',
+              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
               activeSection === 'science'
                 ? 'text-primary dark:text-blush-pink'
                 : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
-            @click="setActiveSection('science')"
+            @click="scrollToSection('science')"
           >
             Science
             <span
@@ -91,16 +102,16 @@ const setActiveSection = (section: string) => {
                 activeSection === 'science' ? 'w-full' : 'w-0'
               ]"
             />
-          </a>
-          <a
-            href="/#community"
+          </button>
+          <button
+            type="button"
             :class="[
-              'relative transition-all duration-300 font-medium pb-1',
+              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
               activeSection === 'community'
                 ? 'text-primary dark:text-blush-pink'
                 : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
-            @click="setActiveSection('community')"
+            @click="scrollToSection('community')"
           >
             Community
             <span
@@ -109,16 +120,16 @@ const setActiveSection = (section: string) => {
                 activeSection === 'community' ? 'w-full' : 'w-0'
               ]"
             />
-          </a>
-          <a
-            href="/#faqs"
+          </button>
+          <button
+            type="button"
             :class="[
-              'relative transition-all duration-300 font-medium pb-1',
+              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
               activeSection === 'faqs'
                 ? 'text-primary dark:text-blush-pink'
                 : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
-            @click="setActiveSection('faqs')"
+            @click="scrollToSection('faqs')"
           >
             FAQs
             <span
@@ -127,16 +138,16 @@ const setActiveSection = (section: string) => {
                 activeSection === 'faqs' ? 'w-full' : 'w-0'
               ]"
             />
-          </a>
-          <a
-            href="/#blog"
+          </button>
+          <button
+            type="button"
             :class="[
-              'relative transition-all duration-300 font-medium pb-1',
+              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
               activeSection === 'blog' || route.path.startsWith('/blog')
                 ? 'text-primary dark:text-blush-pink'
                 : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
-            @click="setActiveSection('blog')"
+            @click="scrollToSection('blog')"
           >
             Blog
             <span
@@ -147,7 +158,7 @@ const setActiveSection = (section: string) => {
                   : 'w-0'
               ]"
             />
-          </a>
+          </button>
         </div>
 
         <!-- Right side - CTA + Theme Toggle -->

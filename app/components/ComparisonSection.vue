@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { X, Check } from 'lucide-vue-next'
+import { Button } from './ui/button'
 
 const withoutThryve = [
   'Random energy crashes mid-week',
@@ -127,6 +128,12 @@ const withThryve = [
         >
           Ready to make the switch?
         </p>
+        <Button
+          class="bg-primary h-11 hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-4 sm:px-6 mt-3 cursor-pointer"
+          :style="{ fontSize: '0.95rem', fontWeight: '600' }"
+        >
+          Join Early Access
+        </Button>
       </div>
     </div>
   </section>

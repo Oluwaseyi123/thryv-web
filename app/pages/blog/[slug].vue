@@ -32,6 +32,11 @@ useSeoMeta({
 definePageMeta({
   layout: 'default'
 })
+
+const router = useRouter()
+const goBack = () => {
+  router.push('/blog')
+}
 </script>
 
 <template>
@@ -52,7 +57,7 @@ definePageMeta({
             Article not found
           </h2>
           <Button
-            class="bg-primary hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-8"
+            class="bg-primary hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-8 cursor-pointer"
             @click="emit('back')"
           >
             Back to Blog
@@ -66,8 +71,8 @@ definePageMeta({
         >
           <div class="container mx-auto max-w-4xl">
             <button
-              class="inline-flex items-center gap-2 mb-8 text-foreground dark:text-blush-pink hover:text-primary dark:hover:text-white transition-colors group"
-              @click="emit('back')"
+              class="inline-flex items-center gap-2 mb-8 text-foreground dark:text-blush-pink hover:text-primary dark:hover:text-white transition-colors group cursor-pointer"
+              @click="goBack"
             >
               <ArrowLeft
                 class="w-5 h-5 group-hover:-translate-x-1 transition-transform"
