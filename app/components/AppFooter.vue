@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { Moon, Instagram, Mail } from 'lucide-vue-next'
+import { Instagram, Mail } from 'lucide-vue-next'
+import ImageWithFallback from './ui/img-with-fallback'
+import logoSvg from '../assets/images/logo.svg'
 
 interface FooterItem {
   name: string
@@ -50,7 +52,11 @@ const currentYear = new Date().getFullYear()
             <div
               class="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 dark:bg-blush-pink/10 backdrop-blur-sm"
             >
-              <Moon class="w-5 h-5 text-white dark:text-blush-pink" />
+              <ImageWithFallback
+                :src="logoSvg"
+                alt="Thryve Logo"
+                class="w-10 h-10 sm:w-10 sm:h-10"
+              />
             </div>
             <span :style="{ fontSize: '1.5rem', fontWeight: '700' }"
               >Thryve</span

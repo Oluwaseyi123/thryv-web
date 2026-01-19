@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Moon } from 'lucide-vue-next'
 import { useRoute, useRouter } from 'vue-router'
-
+import ImageWithFallback from './ui/img-with-fallback'
 import { Button } from './ui/button'
 import ThemeToggle from './ui/theme-toggle.vue'
+import logoSvg from '../assets/images/logo.svg'
 
 const route = useRoute()
 const router = useRouter()
@@ -37,7 +37,12 @@ const scrollToSection = (section: string) => {
           <div
             class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-linear-to-br from-primary to-blush-pink"
           >
-            <Moon class="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+            <!-- <img src="../assets/images/logo.svg" alt="Thryve Logo" /> -->
+            <ImageWithFallback
+              :src="logoSvg"
+              alt="Thryve Logo"
+              class="w-10 h-10 sm:w-10 sm:h-10"
+            />
           </div>
           <span
             class="text-primary dark:text-blush-pink"

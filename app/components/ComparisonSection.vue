@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { X, Check } from 'lucide-vue-next'
 import { Button } from './ui/button'
 
@@ -15,6 +16,41 @@ const withThryve = [
   'Nutrition suggestions tailored to your hormones',
   'Daily check-ins that actually make sense of your mood'
 ]
+
+const showEmailInput = ref(false)
+const email = ref('')
+const isSubmitting = ref(false)
+const isSuccess = ref(false)
+const errorMessage = ref('')
+
+const handleJoinClick = () => {
+  showEmailInput.value = true
+}
+
+const handleSubmit = async () => {
+  if (!email.value || !email.value.includes('@')) {
+    errorMessage.value = 'Please enter a valid email'
+    return
+  }
+
+  isSubmitting.value = true
+  errorMessage.value = ''
+
+  try {
+    await $fetch('/api/waitlist', {
+      method: 'POST',
+      body: { email: email.value }
+    })
+
+    isSuccess.value = true
+    email.value = ''
+  } catch (error: any) {
+    errorMessage.value =
+      error.data?.message || 'Something went wrong. Please try again.'
+  } finally {
+    isSubmitting.value = false
+  }
+}
 </script>
 
 <template>
@@ -128,12 +164,68 @@ const withThryve = [
         >
           Ready to make the switch?
         </p>
+
+        <!-- Success State -->
+        <div
+          v-if="isSuccess"
+          class="mt-3 inline-flex items-center gap-2 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900/30 rounded-xl px-6 py-3 transition-all duration-300"
+        >
+          <Check class="w-5 h-5 text-green-600 dark:text-green-400" />
+          <span class="text-green-700 dark:text-green-300 font-medium">
+            You're on the list! Check your email.
+          </span>
+        </div>
+
+        <!-- Email Input Form -->
+        <form
+          v-else-if="showEmailInput"
+          class="mt-3 inline-flex flex-col sm:flex-row items-center gap-2 transition-all duration-300"
+          @submit.prevent="handleSubmit"
+        >
+          <div class="relative w-full sm:w-auto">
+            <input
+              v-model="email"
+              type="email"
+              placeholder="Enter your email"
+              required
+              autofocus
+              class="w-full sm:w-80 h-11 px-4 rounded-xl border border-primary/20 dark:border-blush-pink/20 bg-white dark:bg-dark-background text-foreground dark:text-blush-pink placeholder:text-foreground/50 dark:placeholder:text-blush-pink/50 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-blush-pink transition-all"
+              :style="{ fontSize: '0.95rem' }"
+            />
+            <p
+              v-if="errorMessage"
+              class="absolute -bottom-6 left-0 text-red-600 dark:text-red-400 text-sm"
+            >
+              {{ errorMessage }}
+            </p>
+          </div>
+          <Button
+            type="submit"
+            :disabled="isSubmitting"
+            class="bg-primary h-11 hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-6 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+            :style="{ fontSize: '0.95rem', fontWeight: '600' }"
+          >
+            {{ isSubmitting ? 'Joining...' : 'Join' }}
+          </Button>
+        </form>
+
+        <!-- Initial Button -->
         <Button
-          class="bg-primary h-11 hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-4 sm:px-6 mt-3 cursor-pointer"
+          v-else
+          class="bg-primary h-11 hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-4 sm:px-6 mt-3 cursor-pointer transition-all"
           :style="{ fontSize: '0.95rem', fontWeight: '600' }"
+          @click="handleJoinClick"
         >
           Join Early Access
         </Button>
+
+        <!-- Privacy Text -->
+        <p
+          v-if="showEmailInput && !isSuccess"
+          class="mt-8 text-foreground/50 dark:text-blush-pink/50 text-sm"
+        >
+          No spam, unsubscribe anytime
+        </p>
       </div>
     </div>
   </section>

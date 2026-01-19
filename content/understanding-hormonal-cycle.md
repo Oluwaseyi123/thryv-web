@@ -8,10 +8,10 @@ date: 2023-03-14
 slug: cycle-based-training-guide
 readTime: 7 min read
 author:
-  name: 'Dr. Sarah Chen'
+  name: 'Thryve Editorial Team'
   title: 'Hormone Health Specialist'
   avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400'
-  bio: "Dr. Sarah Chen is a board-certified endocrinologist specializing in women's hormonal health."
+  bio: "Thryve Editorial Team is a board-certified endocrinologist specializing in women's hormonal health."
 readTime: 7 min read
 image: 'https://images.unsplash.com/photo-1758274525134-4b1e9cc67dbb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b2dhJTIwd29tYW4lMjBzdHJlbmd0aHxlbnwxfHx8fDE3NjM0NjAwNjJ8MA&ixlib=rb-4.1.0&q=80&w=1080'
 related:

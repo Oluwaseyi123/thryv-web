@@ -56,13 +56,7 @@ const regularArticles = computed(() =>
 )
 
 const handleBack = () => {
-  if (props.onBack) {
-    props.onBack()
-  } else {
-    // Fallback: go back in history (Nuxt will auto-import useRouter)
-    const router = useRouter()
-    router.back()
-  }
+  navigateTo('/')
 }
 
 const handleSearchInput = (event: Event) => {
@@ -265,7 +259,7 @@ const handleSearchInput = (event: Event) => {
                       class="text-foreground/50 dark:text-blush-pink/50"
                       :style="{ fontSize: '0.75rem' }"
                     >
-                      Hormone Health Specialist
+                      Women's Health & Performance
                     </p>
                   </div>
                 </div>

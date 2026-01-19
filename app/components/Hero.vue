@@ -11,6 +11,11 @@ const isAnimating = ref(false)
 const phoneRef = ref<HTMLElement | null>(null)
 const isVisible = ref(false)
 
+const email = ref('')
+const isSubmitting = ref(false)
+const isSuccess = ref(false)
+const errorMessage = ref('')
+
 let intervalId: ReturnType<typeof setInterval> | null = null
 let timeoutId: ReturnType<typeof setTimeout> | null = null
 
@@ -54,8 +59,30 @@ onMounted(() => {
   })
 })
 
-const handleSubmit = () => {
-  // Handle email submission logic here
+const handleSubmit = async () => {
+  if (!email.value || !email.value.includes('@')) {
+    errorMessage.value = 'Please enter a valid email'
+    return
+  }
+
+  isSubmitting.value = true
+  errorMessage.value = ''
+
+  try {
+    await $fetch('/api/waitlist', {
+      method: 'POST',
+      body: { email: email.value }
+    })
+
+    isSuccess.value = true
+    email.value = ''
+  }
+  catch (error: any) {
+    errorMessage.value = error.data?.message || 'Something went wrong. Please try again.'
+  }
+  finally {
+    isSubmitting.value = false
+  }
 }
 
 onBeforeUnmount(() => {
@@ -116,26 +143,44 @@ onBeforeUnmount(() => {
             class="text-foreground/80 dark:text-blush-pink/70 max-w-xl mx-auto lg:mx-0"
             :style="{ fontSize: '1.25rem', lineHeight: 1.7 }"
           >
-            Thryve helps you work with your hormones — not against them —
-            through cycle-aware workouts, nutrition, and daily insights.
+            Thryve helps you work with your hormones, not against them, through
+            cycle-aware workouts, nutrition, and daily insights.
           </p>
 
           <!-- Email Capture Form -->
+          <div v-if="isSuccess" class="flex items-center gap-2 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900/30 rounded-xl px-6 py-4 max-w-xl mx-auto lg:mx-0">
+            <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-green-700 dark:text-green-300 font-medium">
+              You're on the list! Check your email.
+            </span>
+          </div>
           <form
+            v-else
             @submit.prevent="handleSubmit"
             class="flex flex-col gap-3 max-w-xl mx-auto lg:mx-0 sm:flex-row"
           >
-            <Input
-              type="email"
-              placeholder="Enter your email"
-              :style="{ fontWeight: 600 }"
-              class="w-full h-13 border-foreground/30 placeholder:foreground/60 text-foreground dark:bg-white/10 backdrop-blur-sm dark:border-white/20 dark:text-white dark:placeholder:text-white/60 rounded-xl px-6 py-6 dark:focus:border-white focus:ring-primary"
-            />
+            <div class="relative flex-1">
+              <Input
+                v-model="email"
+                type="email"
+                placeholder="Enter your email"
+                required
+                :style="{ fontWeight: 600 }"
+                class="w-full h-13 border-foreground/30 placeholder:foreground/60 text-foreground dark:bg-white/10 backdrop-blur-sm dark:border-white/20 dark:text-white dark:placeholder:text-white/60 rounded-xl px-6 py-6 dark:focus:border-white focus:ring-primary"
+              />
+              <p v-if="errorMessage" class="absolute -bottom-6 left-0 text-red-600 dark:text-red-400 text-sm">
+                {{ errorMessage }}
+              </p>
+            </div>
             <Button
-              class="h-13 px-8 cursor-pointer bg-primary hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl"
+              type="submit"
+              :disabled="isSubmitting"
+              class="h-13 px-8 cursor-pointer bg-primary hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
               :style="{ fontSize: '1rem', fontWeight: 600 }"
             >
-              Join Early Access
+              {{ isSubmitting ? 'Joining...' : 'Join Early Access' }}
             </Button>
           </form>
 

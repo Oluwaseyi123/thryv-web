@@ -15,7 +15,6 @@ const top3Articles = computed(() => {
 })
 onMounted(async () => {
   await getArticles()
-  console.log(articles.value)
 })
 
 const router = useRouter()

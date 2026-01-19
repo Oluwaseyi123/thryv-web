@@ -15,7 +15,7 @@ export const useArticlesStore = defineStore('articlesStore', () => {
       blogUrl: '/blog/understanding-hormonal-cycle',
       content: 'Comprehensive guide to understanding hormones...',
       date: 'Nov 20, 2025',
-      author: 'Dr. Sarah Chen',
+      author: 'Thryve Editorial Team',
       featured: true
     },
     {
@@ -46,7 +46,7 @@ export const useArticlesStore = defineStore('articlesStore', () => {
       categoryColor: '#F7E6E1',
       date: 'Nov 18, 2025',
       blogUrl: '/blog/pcos-nutrition-tips',
-      author: 'Dr. Sarah Chen'
+      author: 'Thryve Editorial Team'
     },
     {
       id: 4,
@@ -59,7 +59,7 @@ export const useArticlesStore = defineStore('articlesStore', () => {
         'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1080',
       readTime: '7 min read',
       date: 'Nov 12, 2025',
-      author: 'Dr. Sarah Chen',
+      author: 'Thryve Editorial Team',
       categoryColor: '#6E4C6F',
       blogUrl: '/blog/how-cortisol-affects-menstrual-cycle'
     },

@@ -25,17 +25,40 @@ const benefits: Benefit[] = [
 ]
 
 const email = ref('')
+const isSubmitting = ref(false)
+const isSuccess = ref(false)
+const errorMessage = ref('')
 
-const handleSubmit = () => {
-  console.log('Email submitted:', email.value)
-  // TODO: handle email submission (API call, etc.)
+const handleSubmit = async () => {
+  if (!email.value || !email.value.includes('@')) {
+    errorMessage.value = 'Please enter a valid email'
+    return
+  }
+
+  isSubmitting.value = true
+  errorMessage.value = ''
+
+  try {
+    await $fetch('/api/waitlist', {
+      method: 'POST',
+      body: { email: email.value }
+    })
+
+    isSuccess.value = true
+    email.value = ''
+  } catch (error: any) {
+    errorMessage.value =
+      error.data?.message || 'Something went wrong. Please try again.'
+  } finally {
+    isSubmitting.value = false
+  }
 }
 </script>
 
 <template>
   <section
-    class="relative overflow-hidden py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
     id="community"
+    class="relative overflow-hidden py-16 px-4 sm:py-24 sm:px-6 lg:px-8"
   >
     <!-- Gradient Background -->
     <div
@@ -95,25 +118,57 @@ const handleSubmit = () => {
           </div>
 
           <!-- Email Form -->
+          <div v-if="isSuccess" class="max-w-md mx-auto">
+            <div
+              class="flex items-center justify-center gap-2 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900/30 rounded-xl px-6 py-4"
+            >
+              <svg
+                class="w-5 h-5 text-green-600 dark:text-green-400"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <span class="text-green-700 dark:text-green-300 font-medium">
+                You're on the list! Check your email.
+              </span>
+            </div>
+          </div>
           <form
+            v-else
             class="max-w-md mx-auto space-y-4"
             @submit.prevent="handleSubmit"
           >
             <div class="flex flex-col sm:flex-row gap-3">
-              <Input
-                v-model="email"
-                type="email"
-                placeholder="Enter your email address"
-                required
-                class="flex-1 h-14 px-5 bg-white/95 dark:bg-blush-pink/95 border-white/40 dark:border-blush-pink/40 text-foreground placeholder:text-foreground/50 rounded-xl focus:border-white dark:focus:border-blush-pink focus:ring-white dark:focus:ring-blush-pink"
-                :style="{ fontSize: '1rem' }"
-              />
+              <div class="relative flex-1">
+                <Input
+                  v-model="email"
+                  type="email"
+                  placeholder="Enter your email address"
+                  required
+                  class="w-full h-14 px-5 bg-white/95 dark:bg-blush-pink/95 border-white/40 dark:border-blush-pink/40 text-foreground placeholder:text-foreground/50 rounded-xl focus:border-white dark:focus:border-blush-pink focus:ring-white dark:focus:ring-blush-pink"
+                  :style="{ fontSize: '1rem' }"
+                />
+                <p
+                  v-if="errorMessage"
+                  class="absolute -bottom-6 left-0 text-red-600 dark:text-red-400 text-sm"
+                >
+                  {{ errorMessage }}
+                </p>
+              </div>
               <Button
                 type="submit"
-                class="h-14 px-8 bg-white hover:bg-white/90 dark:bg-blush-pink dark:hover:bg-white text-primary dark:text-dark-background rounded-xl whitespace-nowrap"
+                :disabled="isSubmitting"
+                class="h-14 px-8 bg-white hover:bg-white/90 dark:bg-blush-pink dark:hover:bg-white text-primary dark:text-dark-background rounded-xl whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
                 :style="{ fontSize: '1rem', fontWeight: '600' }"
               >
-                Join the waitlist
+                {{ isSubmitting ? 'Joining...' : 'Join the waitlist' }}
               </Button>
             </div>
             <p

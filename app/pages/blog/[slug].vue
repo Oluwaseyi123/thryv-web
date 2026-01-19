@@ -256,7 +256,7 @@ const goBack = () => {
         </section>
 
         <!-- Related Articles -->
-        <section
+        <!-- <section
           class="px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-br from-blush-pink/20 via-white to-[#CFE1D4]/10 dark:from-dark-background dark:via-dark-background dark:to-dark-background"
         >
           <div class="container mx-auto max-w-6xl">
@@ -328,10 +328,10 @@ const goBack = () => {
               </article>
             </div>
           </div>
-        </section>
+        </section> -->
 
         <!-- Comments/Engagement Section -->
-        <section
+        <!-- <section
           class="px-4 sm:px-6 lg:px-8 py-16 border-t border-primary/10 dark:border-blush-pink/10"
         >
           <div class="container mx-auto max-w-3xl text-center">
@@ -364,7 +364,7 @@ const goBack = () => {
               Sign Up to Comment
             </Button>
           </div>
-        </section>
+        </section> -->
       </template>
       <!-- <ContentRenderer v-if="data" :value="data" />
       <div v-else>Home not found</div>
