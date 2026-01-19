@@ -16,16 +16,9 @@ const articlesStore = useArticlesStore()
 const { articles } = storeToRefs(articlesStore)
 const { getArticles } = articlesStore
 
-const categories = [
-  'All',
-  'Hormones',
-  'Cycle Syncing',
-  'PCOS',
-  'Nutrition',
-  'Wellness'
-]
+const categories = ['All', 'Hormones', 'Cycle Syncing', 'PCOS', 'Nutrition', 'Wellness']
 
-const props = defineProps<{
+defineProps<{
   onBack?: () => void
 }>()
 
@@ -37,23 +30,17 @@ onMounted(async () => {
 })
 
 const filteredArticles = computed(() =>
-  articles.value.filter((article) => {
-    const matchesCategory =
-      selectedCategory.value === 'All' ||
-      article.category === selectedCategory.value
+  articles.value.filter(article => {
+    const matchesCategory = selectedCategory.value === 'All' || article.category === selectedCategory.value
     const query = searchQuery.value.toLowerCase()
-    const matchesSearch =
-      article.title.toLowerCase().includes(query) ||
-      article.excerpt.toLowerCase().includes(query)
+    const matchesSearch = article.title.toLowerCase().includes(query) || article.excerpt.toLowerCase().includes(query)
     return matchesCategory && matchesSearch
   })
 )
 
-const featuredArticle = computed(() => articles.value.find((a) => a.featured))
+const featuredArticle = computed(() => articles.value.find(a => a.featured))
 
-const regularArticles = computed(() =>
-  filteredArticles.value.filter((a) => !a.featured)
-)
+const regularArticles = computed(() => filteredArticles.value.filter(a => !a.featured))
 
 const handleBack = () => {
   navigateTo('/')
@@ -67,9 +54,7 @@ const handleSearchInput = (event: Event) => {
 
 <template>
   <NuxtLayout name="default">
-    <div
-      class="min-h-screen bg-background dark:bg-dark-background transition-colors"
-    >
+    <div class="min-h-screen bg-background dark:bg-dark-background transition-colors">
       <!-- Hero Section -->
       <section
         class="pt-24 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-blush-pink/30 via-background to-secondary/20 dark:from-[#2d2534] dark:via-dark-background dark:to-[#2a3432]/20"
@@ -79,9 +64,7 @@ const handleSearchInput = (event: Event) => {
             class="inline-flex items-center gap-2 mb-8 text-foreground dark:text-blush-pink hover:text-primary dark:hover:text-white transition-colors group"
             @click="handleBack"
           >
-            <ArrowLeft
-              class="w-5 h-5 group-hover:-translate-x-1 transition-transform"
-            />
+            <ArrowLeft class="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             <span :style="{ fontWeight: '500' }">Back to Home</span>
           </button>
 
@@ -89,10 +72,7 @@ const handleSearchInput = (event: Event) => {
             <div
               class="inline-block px-4 py-2 bg-white/60 dark:bg-[#251c29]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-blush-pink/10"
             >
-              <span
-                class="text-primary dark:text-blush-pink"
-                :style="{ fontSize: '0.875rem', fontWeight: '600' }"
-              >
+              <span class="text-primary dark:text-blush-pink" :style="{ fontSize: '0.875rem', fontWeight: '600' }">
                 THRYVE BLOG
               </span>
             </div>
@@ -108,12 +88,8 @@ const handleSearchInput = (event: Event) => {
               Your guide to hormone-aware wellness
             </h1>
 
-            <p
-              class="text-foreground/70 dark:text-blush-pink/70"
-              :style="{ fontSize: '1.25rem', lineHeight: '1.6' }"
-            >
-              Evidence-based insights on cycle syncing, hormonal health, and
-              thriving through every phase
+            <p class="text-foreground/70 dark:text-blush-pink/70" :style="{ fontSize: '1.25rem', lineHeight: '1.6' }">
+              Evidence-based insights on cycle syncing, hormonal health, and thriving through every phase
             </p>
 
             <!-- Search Bar -->
@@ -166,10 +142,7 @@ const handleSearchInput = (event: Event) => {
       >
         <div class="container mx-auto max-w-6xl">
           <div class="mb-6">
-            <h2
-              class="text-foreground dark:text-blush-pink"
-              :style="{ fontSize: '1.5rem', fontWeight: '600' }"
-            >
+            <h2 class="text-foreground dark:text-blush-pink" :style="{ fontSize: '1.5rem', fontWeight: '600' }">
               Featured Article
             </h2>
           </div>
@@ -178,9 +151,7 @@ const handleSearchInput = (event: Event) => {
             class="group bg-white dark:bg-[#251c29] rounded-2xl overflow-hidden border border-primary/10 dark:border-blush-pink/10 hover:shadow-2xl transition-all duration-300"
           >
             <div class="grid md:grid-cols-2 gap-8">
-              <div
-                class="relative aspect-4/3 md:aspect-auto overflow-hidden bg-blush-pink/30 dark:bg-[#2d2534]/30"
-              >
+              <div class="relative aspect-4/3 md:aspect-auto overflow-hidden bg-blush-pink/30 dark:bg-[#2d2534]/30">
                 <ImageWithFallback
                   :src="featuredArticle!.image"
                   :alt="featuredArticle!.title"
@@ -190,10 +161,7 @@ const handleSearchInput = (event: Event) => {
                   class="absolute top-6 left-6 px-4 py-2 rounded-full backdrop-blur-sm"
                   :style="{ backgroundColor: 'rgba(110, 76, 111, 0.9)' }"
                 >
-                  <span
-                    class="text-white"
-                    :style="{ fontSize: '0.875rem', fontWeight: '600' }"
-                  >
+                  <span class="text-white" :style="{ fontSize: '0.875rem', fontWeight: '600' }">
                     {{ featuredArticle!.category }}
                   </span>
                 </div>
@@ -227,27 +195,19 @@ const handleSearchInput = (event: Event) => {
                   {{ featuredArticle!.excerpt }}
                 </p>
 
-                <div
-                  class="flex flex-wrap items-center gap-4 mb-6 text-foreground/60 dark:text-blush-pink/60"
-                >
+                <div class="flex flex-wrap items-center gap-4 mb-6 text-foreground/60 dark:text-blush-pink/60">
                   <div class="flex items-center gap-2">
                     <Calendar class="w-4 h-4" />
-                    <span :style="{ fontSize: '0.875rem' }">{{
-                      featuredArticle!.date
-                    }}</span>
+                    <span :style="{ fontSize: '0.875rem' }">{{ featuredArticle!.date }}</span>
                   </div>
                   <div class="flex items-center gap-2">
                     <Clock class="w-4 h-4" />
-                    <span :style="{ fontSize: '0.875rem' }">{{
-                      featuredArticle!.readTime
-                    }}</span>
+                    <span :style="{ fontSize: '0.875rem' }">{{ featuredArticle!.readTime }}</span>
                   </div>
                 </div>
 
                 <div class="flex items-center gap-3">
-                  <div
-                    class="w-10 h-10 rounded-full bg-linear-to-br from-primary to-blush-pink"
-                  />
+                  <div class="w-10 h-10 rounded-full bg-linear-to-br from-primary to-blush-pink" />
                   <div>
                     <p
                       class="text-foreground dark:text-blush-pink"
@@ -255,10 +215,7 @@ const handleSearchInput = (event: Event) => {
                     >
                       {{ featuredArticle!.author }}
                     </p>
-                    <p
-                      class="text-foreground/50 dark:text-blush-pink/50"
-                      :style="{ fontSize: '0.75rem' }"
-                    >
+                    <p class="text-foreground/50 dark:text-blush-pink/50" :style="{ fontSize: '0.75rem' }">
                       Women's Health & Performance
                     </p>
                   </div>
@@ -281,18 +238,10 @@ const handleSearchInput = (event: Event) => {
         <div class="container mx-auto max-w-6xl">
           <template v-if="regularArticles.length > 0">
             <div class="mb-8 flex items-center justify-between">
-              <h2
-                class="text-foreground dark:text-blush-pink"
-                :style="{ fontSize: '1.5rem', fontWeight: '600' }"
-              >
-                {{
-                  selectedCategory === 'All' ? 'All Articles' : selectedCategory
-                }}
+              <h2 class="text-foreground dark:text-blush-pink" :style="{ fontSize: '1.5rem', fontWeight: '600' }">
+                {{ selectedCategory === 'All' ? 'All Articles' : selectedCategory }}
               </h2>
-              <p
-                class="text-foreground/60 dark:text-blush-pink/60"
-                :style="{ fontSize: '0.875rem' }"
-              >
+              <p class="text-foreground/60 dark:text-blush-pink/60" :style="{ fontSize: '0.875rem' }">
                 {{ regularArticles.length }}
                 {{ regularArticles.length === 1 ? 'article' : 'articles' }}
               </p>
@@ -307,15 +256,10 @@ const handleSearchInput = (event: Event) => {
             >
               <Search class="w-8 h-8 text-primary dark:text-blush-pink" />
             </div>
-            <h3
-              class="text-foreground dark:text-blush-pink mb-2"
-              :style="{ fontSize: '1.25rem', fontWeight: '600' }"
-            >
+            <h3 class="text-foreground dark:text-blush-pink mb-2" :style="{ fontSize: '1.25rem', fontWeight: '600' }">
               No articles found
             </h3>
-            <p class="text-foreground/60 dark:text-blush-pink/60">
-              Try adjusting your search or filter
-            </p>
+            <p class="text-foreground/60 dark:text-blush-pink/60">Try adjusting your search or filter</p>
           </div>
         </div>
       </section>
@@ -325,25 +269,16 @@ const handleSearchInput = (event: Event) => {
         class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-linear-to-br from-primary to-[#5a3d5b] dark:from-[#2d2534] dark:to-dark-background"
       >
         <div class="container mx-auto max-w-4xl text-center">
-          <div
-            class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-6"
-          >
+          <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm mb-6">
             <Tag class="w-8 h-8 text-white" />
           </div>
 
-          <h2
-            class="text-white mb-4"
-            :style="{ fontSize: 'clamp(2rem, 4vw, 2.5rem)', fontWeight: '700' }"
-          >
+          <h2 class="text-white mb-4" :style="{ fontSize: 'clamp(2rem, 4vw, 2.5rem)', fontWeight: '700' }">
             Never miss an insight
           </h2>
 
-          <p
-            class="text-white/80 mb-8 max-w-2xl mx-auto"
-            :style="{ fontSize: '1.125rem', lineHeight: '1.6' }"
-          >
-            Get our latest articles on hormonal health, cycle syncing, and
-            wellness delivered to your inbox every week.
+          <p class="text-white/80 mb-8 max-w-2xl mx-auto" :style="{ fontSize: '1.125rem', lineHeight: '1.6' }">
+            Get our latest articles on hormonal health, cycle syncing, and wellness delivered to your inbox every week.
           </p>
 
           <div class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
@@ -352,9 +287,7 @@ const handleSearchInput = (event: Event) => {
               placeholder="Enter your email"
               class="flex-1 bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 rounded-xl px-6 py-6 focus:border-white"
             />
-            <Button
-              class="bg-white hover:bg-white/90 text-primary rounded-xl px-8 py-6 whitespace-nowrap"
-            >
+            <Button class="bg-white hover:bg-white/90 text-primary rounded-xl px-8 py-6 whitespace-nowrap">
               Subscribe
             </Button>
           </div>

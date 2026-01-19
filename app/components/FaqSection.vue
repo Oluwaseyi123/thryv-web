@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger
-} from '@/components/ui/accordion'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 
 const faqs = [
   {
@@ -14,13 +9,11 @@ const faqs = [
   },
   {
     label: 'Does Thryve work if my cycle is irregular or I have PCOS?',
-    content:
-      "Yes! Thryve is specifically designed to be flexible and inclusive. We have a PCOS-friendly mode that adapts to irregular cycles. You don't need a perfect 28-day cycle to benefit from cycle syncing — we'll help you identify your unique patterns and work with your body's natural rhythm, whatever that looks like for you."
+    content: `Yes! Thryve is specifically designed to be flexible and inclusive. We have a PCOS-friendly mode that adapts to irregular cycles. You don't need a perfect 28-day cycle to benefit from cycle syncing — we'll help you identify your unique patterns and work with your body's natural rhythm, whatever that looks like for you.`
   },
   {
     label: 'Do I need a wearable to use Thryve?',
-    content:
-      "No, you don't need any wearable device to use Thryve. The app works with simple daily check-ins where you track your energy, mood, and symptoms. However, if you do use a fitness tracker or period tracking app, Thryve can integrate with those to provide even more personalized insights."
+    content: `No, you don't need any wearable device to use Thryve. The app works with simple daily check-ins where you track your energy, mood, and symptoms. However, if you do use a fitness tracker or period tracking app, Thryve can integrate with those to provide even more personalized insights.`
   },
   {
     label: 'Will this help with weight loss?',
@@ -29,13 +22,11 @@ const faqs = [
   },
   {
     label: 'When will Thryve be available?',
-    content:
-      "We're currently in beta testing with early access users. By joining the waitlist, you'll be among the first to know when we launch publicly. We're aiming for a full release in 2025, with both iOS and Android versions available."
+    content: `We're currently in beta testing with early access users. By joining the waitlist, you'll be among the first to know when we launch publicly. We're aiming for a full release in 2025, with both iOS and Android versions available.`
   },
   {
     label: 'How much will Thryve cost?',
-    content:
-      "We're still finalizing pricing details, but we're committed to making Thryve accessible. Early access members on the waitlist will receive special launch pricing. We'll share more details as we get closer to launch."
+    content: `We're still finalizing pricing details, but we're committed to making Thryve accessible. Early access members on the waitlist will receive special launch pricing. We'll share more details as we get closer to launch.`
   },
   {
     label: 'Is my data private and secure?',
@@ -43,28 +34,21 @@ const faqs = [
       'Absolutely. Your health data is sensitive, and we take privacy very seriously. All data is encrypted, stored securely, and never shared with third parties without your explicit consent. You own your data and can delete it anytime.'
   },
   {
-    label: "Can I use Thryve if I'm not trying to get pregnant?",
-    content:
-      "Yes! Thryve is for any woman who wants to understand her cycle and optimize her wellness. Whether you're focused on fitness, managing PCOS, improving energy levels, or just understanding your body better — Thryve is designed to support you, regardless of your reproductive goals."
+    label: `Can I use Thryve if I'm not trying to get pregnant?`,
+    content: `Yes! Thryve is for any woman who wants to understand her cycle and optimize her wellness. Whether you're focused on fitness, managing PCOS, improving energy levels, or just understanding your body better — Thryve is designed to support you, regardless of your reproductive goals.`
   }
 ]
 </script>
 
 <template>
-  <section
-    id="faqs"
-    class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark-background"
-  >
+  <section id="faqs" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-dark-background">
     <div class="container mx-auto max-w-4xl">
       <!-- Header -->
       <div class="text-center mb-12 sm:mb-16 space-y-4">
         <div
           class="inline-block px-4 py-2 bg-blush-pink/50 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-blush-pink/10"
         >
-          <span
-            class="text-primary dark:text-blush-pink"
-            :style="{ fontSize: '0.875rem', fontWeight: '600' }"
-          >
+          <span class="text-primary dark:text-blush-pink" :style="{ fontSize: '0.875rem', fontWeight: '600' }">
             FAQs
           </span>
         </div>
@@ -79,10 +63,7 @@ const faqs = [
           Questions, meet answers.
         </h2>
 
-        <p
-          class="text-foreground/70 dark:text-blush-pink/70 max-w-2xl mx-auto"
-          :style="{ fontSize: '1.125rem' }"
-        >
+        <p class="text-foreground/70 dark:text-blush-pink/70 max-w-2xl mx-auto" :style="{ fontSize: '1.125rem' }">
           Everything you need to know about Thryve.
         </p>
       </div>
@@ -112,10 +93,7 @@ const faqs = [
 
       <!-- Still have questions CTA -->
       <div class="mt-12 text-center">
-        <p
-          class="text-foreground/70 dark:text-blush-pink/70 mb-4"
-          :style="{ fontSize: '1rem' }"
-        >
+        <p class="text-foreground/70 dark:text-blush-pink/70 mb-4" :style="{ fontSize: '1rem' }">
           Still have questions?
         </p>
         <a

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { ArrowRight } from 'lucide-vue-next'
-import ImageWithFallback from './ui/img-with-fallback'
 import { useArticlesStore } from '@/stores/articlesStore'
 import { storeToRefs } from 'pinia'
 import BlogCard from './BlogCard.vue'

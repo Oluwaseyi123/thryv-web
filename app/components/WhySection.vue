@@ -2,7 +2,7 @@
 import { Heart, Brain, Sparkles } from 'lucide-vue-next'
 
 interface Card {
-  icon: any
+  icon: unknown
   title: string
   description: string
   gradient: string

@@ -51,7 +51,7 @@ export const Button = defineComponent({
     },
     // allow passing extra classes like in React's className
     class: {
-      type: [String, Array, Object] as PropType<any>,
+      type: [String, Array, Object] as PropType<unknown>,
       default: undefined
     }
   },

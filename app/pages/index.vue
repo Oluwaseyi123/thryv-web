@@ -3,9 +3,7 @@ definePageMeta({
   layout: 'default'
 })
 
-const { data: page } = await useAsyncData('index', () =>
-  queryCollection('content').first()
-)
+const { data: page } = await useAsyncData('index', () => queryCollection('content').first())
 if (!page.value) {
   throw createError({
     statusCode: 404,

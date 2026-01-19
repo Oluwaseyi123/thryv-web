@@ -1,15 +1,4 @@
-// components/ui/accordion.ts
-import {
-  defineComponent,
-  type InjectionKey,
-  type PropType,
-  type Ref,
-  ref,
-  computed,
-  inject,
-  provide,
-  h
-} from 'vue'
+import { defineComponent, type InjectionKey, type PropType, type Ref, ref, computed, inject, provide, h } from 'vue'
 import { ChevronDownIcon } from 'lucide-vue-next'
 import { cn } from './utils'
 
@@ -28,13 +17,8 @@ interface AccordionItemContext {
 }
 
 const AccordionSymbol: InjectionKey<AccordionContext> = Symbol('AccordionRoot')
-const AccordionItemSymbol: InjectionKey<AccordionItemContext>
-  = Symbol('AccordionItem')
+const AccordionItemSymbol: InjectionKey<AccordionItemContext> = Symbol('AccordionItem')
 
-/**
- * <Accordion>
- * Root component – provides context for items (single/multiple, collapsible, etc.)
- */
 export const Accordion = defineComponent({
   name: 'Accordion',
   inheritAttrs: false,
@@ -47,10 +31,6 @@ export const Accordion = defineComponent({
       type: Boolean,
       default: true
     },
-    /**
-     * Optional controlled value — array for `multiple`, string for `single`
-     * If you don’t need controlled behavior, ignore this prop.
-     */
     modelValue: {
       type: [String, Array] as PropType<string | string[] | undefined>,
       default: undefined
@@ -63,11 +43,7 @@ export const Accordion = defineComponent({
     const openValues = computed<string[]>({
       get() {
         if (props.modelValue === undefined) return internalValues.value
-        return Array.isArray(props.modelValue)
-          ? props.modelValue
-          : props.modelValue
-            ? [props.modelValue]
-            : []
+        return Array.isArray(props.modelValue) ? props.modelValue : props.modelValue ? [props.modelValue] : []
       },
       set(next) {
         if (props.modelValue === undefined) {
@@ -119,17 +95,13 @@ export const Accordion = defineComponent({
         {
           ...restAttrs,
           'data-slot': 'accordion',
-          'class': classes
+          class: classes
         },
         slots.default?.()
       )
   }
 })
 
-/**
- * <AccordionItem>
- * Wraps a single item & registers its value in context.
- */
 export const AccordionItem = defineComponent({
   name: 'AccordionItem',
   inheritAttrs: false,
@@ -145,9 +117,7 @@ export const AccordionItem = defineComponent({
       throw new Error('AccordionItem must be used inside Accordion.')
     }
 
-    const isOpen = computed(() =>
-      accordion.openValues.value.includes(props.value)
-    )
+    const isOpen = computed(() => accordion.openValues.value.includes(props.value))
 
     provide(AccordionItemSymbol, {
       value: props.value,
@@ -165,17 +135,13 @@ export const AccordionItem = defineComponent({
           ...restAttrs,
           'data-slot': 'accordion-item',
           'data-state': isOpen.value ? 'open' : 'closed',
-          'class': classes
+          class: classes
         },
         slots.default?.()
       )
   }
 })
 
-/**
- * <AccordionTrigger>
- * Clickable header – toggles open/closed state.
- */
 export const AccordionTrigger = defineComponent({
   name: 'AccordionTrigger',
   inheritAttrs: false,
@@ -184,9 +150,7 @@ export const AccordionTrigger = defineComponent({
     const item = inject(AccordionItemSymbol)
 
     if (!accordion || !item) {
-      throw new Error(
-        'AccordionTrigger must be used inside AccordionItem within Accordion.'
-      )
+      throw new Error('AccordionTrigger must be used inside AccordionItem within Accordion.')
     }
 
     const onClick = (event: MouseEvent) => {
@@ -195,29 +159,27 @@ export const AccordionTrigger = defineComponent({
     }
 
     const { class: classAttr, ...restAttrs } = attrs
-    const baseClass
-      = 'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50'
+    const baseClass =
+      'focus-visible:border-ring focus-visible:ring-ring/50 flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50'
     const classes = cn(baseClass, classAttr as any)
 
-    const iconBaseClass
-      = 'text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200'
+    const iconBaseClass =
+      'text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200'
 
     return () =>
-      h('div', { 'data-slot': 'accordion-header', 'class': 'flex' }, [
+      h('div', { 'data-slot': 'accordion-header', class: 'flex' }, [
         h(
           'button',
           {
             ...restAttrs,
-            'type': 'button',
+            type: 'button',
             'data-slot': 'accordion-trigger',
             'data-state': item.isOpen.value ? 'open' : 'closed',
-            'class': classes,
+            class: classes,
             onClick
           },
           [
-            // label / children
             ...(slots.default ? slots.default() : []),
-            // Chevron icon (rotates when open)
             h(ChevronDownIcon, {
               class: cn(iconBaseClass, item.isOpen.value && 'rotate-180')
             })
@@ -227,10 +189,6 @@ export const AccordionTrigger = defineComponent({
   }
 })
 
-/**
- * <AccordionContent>
- * Collapsible content area for each item.
- */
 export const AccordionContent = defineComponent({
   name: 'AccordionContent',
   inheritAttrs: false,
@@ -242,8 +200,7 @@ export const AccordionContent = defineComponent({
     }
 
     const { class: classAttr, ...restAttrs } = attrs
-    const baseClass
-      = 'grid overflow-hidden text-sm transition-[height] duration-200 ease-out'
+    const baseClass = 'grid overflow-hidden text-sm transition-[height] duration-200 ease-out'
     const wrapperClass = cn('pt-0 pb-4 overflow-hidden', classAttr as any)
 
     return () =>
@@ -253,8 +210,8 @@ export const AccordionContent = defineComponent({
           ...restAttrs,
           'data-slot': 'accordion-content',
           'data-state': item.isOpen.value ? 'open' : 'closed',
-          'class': baseClass,
-          'style': item.isOpen.value ? 'height: 90px' : 'height: 0px;'
+          class: baseClass,
+          style: item.isOpen.value ? 'height: 90px' : 'height: 0px;'
         },
         [
           h(

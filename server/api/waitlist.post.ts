@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
     }
 
     // Send welcome email to user
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: 'Thryve <onboarding@resend.dev>',
       to: email,
       subject: 'Welcome to Thryve Early Access!',
@@ -39,7 +39,7 @@ export default defineEventHandler(async (event) => {
   } catch (error) {
     throw createError({
       statusCode: 500,
-      message: 'Failed to join waitlist'
+      message: error
     })
   }
 })

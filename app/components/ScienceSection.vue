@@ -394,8 +394,9 @@ onMounted(() => {
           <span
             class="text-primary dark:text-secondary"
             :style="{ fontWeight: '600' }"
-            >Important:</span
           >
+            Important:
+          </span>
           Thryve provides education and guidance based on peer-reviewed
           research. It is not a medical app and does not diagnose or treat any
           conditions. Always consult with your healthcare provider for medical

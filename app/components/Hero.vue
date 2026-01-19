@@ -76,11 +76,10 @@ const handleSubmit = async () => {
 
     isSuccess.value = true
     email.value = ''
-  }
-  catch (error: any) {
-    errorMessage.value = error.data?.message || 'Something went wrong. Please try again.'
-  }
-  finally {
+  } catch (error: any) {
+    errorMessage.value =
+      error.data?.message || 'Something went wrong. Please try again.'
+  } finally {
     isSubmitting.value = false
   }
 }
@@ -148,9 +147,22 @@ onBeforeUnmount(() => {
           </p>
 
           <!-- Email Capture Form -->
-          <div v-if="isSuccess" class="flex items-center gap-2 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900/30 rounded-xl px-6 py-4 max-w-xl mx-auto lg:mx-0">
-            <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+          <div
+            v-if="isSuccess"
+            class="flex items-center gap-2 bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-900/30 rounded-xl px-6 py-4 max-w-xl mx-auto lg:mx-0"
+          >
+            <svg
+              class="w-5 h-5 text-green-600 dark:text-green-400"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"
+              />
             </svg>
             <span class="text-green-700 dark:text-green-300 font-medium">
               You're on the list! Check your email.
@@ -158,8 +170,8 @@ onBeforeUnmount(() => {
           </div>
           <form
             v-else
-            @submit.prevent="handleSubmit"
             class="flex flex-col gap-3 max-w-xl mx-auto lg:mx-0 sm:flex-row"
+            @submit.prevent="handleSubmit"
           >
             <div class="relative flex-1">
               <Input
@@ -170,7 +182,10 @@ onBeforeUnmount(() => {
                 :style="{ fontWeight: 600 }"
                 class="w-full h-13 border-foreground/30 placeholder:foreground/60 text-foreground dark:bg-white/10 backdrop-blur-sm dark:border-white/20 dark:text-white dark:placeholder:text-white/60 rounded-xl px-6 py-6 dark:focus:border-white focus:ring-primary"
               />
-              <p v-if="errorMessage" class="absolute -bottom-6 left-0 text-red-600 dark:text-red-400 text-sm">
+              <p
+                v-if="errorMessage"
+                class="absolute -bottom-6 left-0 text-red-600 dark:text-red-400 text-sm"
+              >
                 {{ errorMessage }}
               </p>
             </div>

@@ -9,12 +9,16 @@ interface FooterItem {
 }
 
 interface SocialLink {
-  icon: any
+  icon: unknown
   href: string
   label: string
 }
+interface FooterLinks {
+  product: FooterItem[]
+  resources: FooterItem[]
+}
 
-const footerLinks: { product: FooterItem[]; resources: FooterItem[] } = {
+const footerLinks: FooterLinks = {
   product: [
     { name: 'About', href: '#about' },
     { name: 'Features', href: '#features' },
@@ -58,9 +62,9 @@ const currentYear = new Date().getFullYear()
                 class="w-10 h-10 sm:w-10 sm:h-10"
               />
             </div>
-            <span :style="{ fontSize: '1.5rem', fontWeight: '700' }"
-              >Thryve</span
-            >
+            <span :style="{ fontSize: '1.5rem', fontWeight: '700' }">
+              Thryve
+            </span>
           </div>
           <p
             class="text-white/90 dark:text-blush-pink/80 mb-6 max-w-md"

@@ -1,14 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import {
-  ArrowLeft,
-  Calendar,
-  Clock,
-  Share2,
-  Bookmark,
-  Heart,
-  MessageCircle
-} from 'lucide-vue-next'
+import { ArrowLeft, Calendar, Clock, Share2, Bookmark, Heart } from 'lucide-vue-next'
 
 import ImageWithFallback from '@/components/ui/img-with-fallback'
 import { Button } from '@/components/ui/button'
@@ -41,19 +32,11 @@ const goBack = () => {
 
 <template>
   <NuxtLayout>
-    <div
-      class="min-h-screen bg-background dark:bg-dark-background transition-colors"
-    >
+    <div class="min-h-screen bg-background dark:bg-dark-background transition-colors">
       <!-- Article not found -->
-      <div
-        v-if="!article"
-        class="min-h-screen bg-background dark:bg-dark-background flex items-center justify-center"
-      >
+      <div v-if="!article" class="min-h-screen bg-background dark:bg-dark-background flex items-center justify-center">
         <div class="text-center">
-          <h2
-            class="text-foreground dark:text-blush-pink mb-4"
-            :style="{ fontSize: '2rem', fontWeight: '700' }"
-          >
+          <h2 class="text-foreground dark:text-blush-pink mb-4" :style="{ fontSize: '2rem', fontWeight: '700' }">
             Article not found
           </h2>
           <Button
@@ -74,9 +57,7 @@ const goBack = () => {
               class="inline-flex items-center gap-2 mb-8 text-foreground dark:text-blush-pink hover:text-primary dark:hover:text-white transition-colors group cursor-pointer"
               @click="goBack"
             >
-              <ArrowLeft
-                class="w-5 h-5 group-hover:-translate-x-1 transition-transform"
-              />
+              <ArrowLeft class="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
               <span :style="{ fontWeight: '500' }">Back to Blog</span>
             </button>
 
@@ -86,9 +67,7 @@ const goBack = () => {
                 class="inline-block px-4 py-2 rounded-full"
                 :style="{
                   backgroundColor:
-                    article.categoryColor === '#6E4C6F'
-                      ? 'rgba(110, 76, 111, 0.15)'
-                      : 'rgba(207, 225, 212, 0.3)',
+                    article.categoryColor === '#6E4C6F' ? 'rgba(110, 76, 111, 0.15)' : 'rgba(207, 225, 212, 0.3)',
                   color: article.categoryColor
                 }"
               >
@@ -129,24 +108,16 @@ const goBack = () => {
                   class="w-10 h-10 rounded-full object-cover"
                 />
                 <div>
-                  <p
-                    class="text-foreground dark:text-blush-pink"
-                    :style="{ fontSize: '0.875rem', fontWeight: '600' }"
-                  >
+                  <p class="text-foreground dark:text-blush-pink" :style="{ fontSize: '0.875rem', fontWeight: '600' }">
                     {{ article.author.name }}
                   </p>
-                  <p
-                    class="text-foreground/60 dark:text-blush-pink/60"
-                    :style="{ fontSize: '0.75rem' }"
-                  >
+                  <p class="text-foreground/60 dark:text-blush-pink/60" :style="{ fontSize: '0.75rem' }">
                     {{ article.author.title }}
                   </p>
                 </div>
               </div>
 
-              <div
-                class="flex items-center gap-4 text-foreground/60 dark:text-blush-pink/60"
-              >
+              <div class="flex items-center gap-4 text-foreground/60 dark:text-blush-pink/60">
                 <div class="flex items-center gap-2">
                   <Calendar class="w-4 h-4" />
                   <span :style="{ fontSize: '0.875rem' }">
@@ -192,11 +163,7 @@ const goBack = () => {
             <div
               class="aspect-[16/9] rounded-2xl overflow-hidden bg-blush-pink/30 dark:bg-[#2d2534]/30 border border-primary/10 dark:border-blush-pink/10"
             >
-              <ImageWithFallback
-                :src="article.image"
-                :alt="article.title"
-                class="w-full h-full object-cover"
-              />
+              <ImageWithFallback :src="article.image" :alt="article.title" class="w-full h-full object-cover" />
             </div>
           </div>
         </section>
