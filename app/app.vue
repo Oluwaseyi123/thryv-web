@@ -15,9 +15,19 @@ useHead({
 })
 
 useSeoMeta({
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/landing-light.png',
-  twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/landing-light.png',
-  twitterCard: 'summary_large_image'
+  title: 'Thryve - Hormone-Aware Fitness & Wellness',
+  description:
+    'Transform your energy, training, and wellness by working with your cycle. Personalized workouts, nutrition, and insights tailored to your hormones.',
+  ogTitle: 'Thryve - Hormone-Aware Fitness & Wellness',
+  ogDescription:
+    'Transform your energy, training, and wellness by working with your cycle. Personalized workouts, nutrition, and insights tailored to your hormones.',
+  ogImage: '/og-image.png',
+  ogType: 'website',
+  twitterCard: 'summary_large_image',
+  twitterTitle: 'Thryve - Hormone-Aware Fitness & Wellness',
+  twitterDescription:
+    'Transform your energy, training, and wellness by working with your cycle. Personalized workouts, nutrition, and insights tailored to your hormones.',
+  twitterImage: '/og-image.png'
 })
 </script>
 
