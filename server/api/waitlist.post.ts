@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 
-const resend = new Resend('re_hdRW9Kxy_9unSsE5PHhqjmxMYEpbdFpDb')
+const resend = new Resend(process.env.RESEND_API_KEY || 're_hdRW9Kxy_9unSsE5PHhqjmxMYEpbdFpDb')
 
 export default defineEventHandler(async (event) => {
   console.log('Waitlist endpoint hit')
