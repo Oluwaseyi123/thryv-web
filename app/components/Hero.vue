@@ -115,6 +115,7 @@ onBeforeUnmount(() => {
               }"
             >
               Transform your
+              <br />
               <span class="relative inline-block">
                 <span
                   :class="[
