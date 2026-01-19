@@ -186,7 +186,7 @@ const goBack = () => {
         </article>
 
         <!-- Author Bio -->
-        <section class="px-4 sm:px-6 lg:px-8 mb-16">
+        <section class="px-4 sm:px-6 lg:px-8 pb-16">
           <div class="container mx-auto max-w-3xl">
             <div
               class="bg-gradient-to-br from-blush-pink/30 to-[#CFE1D4]/20 dark:from-[#2d2534]/50 dark:to-[#2a3432]/30 rounded-2xl p-8 border border-primary/10 dark:border-blush-pink/10"

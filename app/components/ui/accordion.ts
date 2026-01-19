@@ -211,7 +211,7 @@ export const AccordionContent = defineComponent({
           'data-slot': 'accordion-content',
           'data-state': item.isOpen.value ? 'open' : 'closed',
           class: baseClass,
-          style: item.isOpen.value ? 'height: 90px' : 'height: 0px;'
+          style: item.isOpen.value ? 'height: auto' : 'height: 0px;'
         },
         [
           h(

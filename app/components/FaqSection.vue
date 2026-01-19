@@ -63,7 +63,7 @@ const faqs = [
           Questions, meet answers.
         </h2>
 
-        <p class="text-foreground/70 dark:text-blush-pink/70 max-w-2xl mx-auto" :style="{ fontSize: '1.125rem' }">
+        <p class="text-foreground/70 dark:text-blush-pink/70 max-w-2xl mx-auto">
           Everything you need to know about Thryve.
         </p>
       </div>
@@ -82,10 +82,7 @@ const faqs = [
           >
             {{ faq.label }}
           </AccordionTrigger>
-          <AccordionContent
-            class="text-foreground/80 dark:text-blush-pink/80 pb-5"
-            :style="{ fontSize: '1rem', lineHeight: '1.7' }"
-          >
+          <AccordionContent class="text-foreground/80 dark:text-blush-pink/80 pb-5">
             {{ faq.content }}
           </AccordionContent>
         </AccordionItem>
@@ -93,9 +90,7 @@ const faqs = [
 
       <!-- Still have questions CTA -->
       <div class="mt-12 text-center">
-        <p class="text-foreground/70 dark:text-blush-pink/70 mb-4" :style="{ fontSize: '1rem' }">
-          Still have questions?
-        </p>
+        <p class="text-foreground/70 dark:text-blush-pink/70 mb-4">Still have questions?</p>
         <a
           href="mailto:hello@thryve.app"
           class="inline-flex items-center gap-2 text-primary dark:text-secondary hover:underline"

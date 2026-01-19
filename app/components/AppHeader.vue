@@ -37,17 +37,14 @@ const scrollToSection = (section: string) => {
           <div
             class="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-linear-to-br from-primary to-blush-pink"
           >
-            <!-- <img src="../assets/images/logo.svg" alt="Thryve Logo" /> -->
             <ImageWithFallback
               :src="logoSvg"
               alt="Thryve Logo"
-              class="w-10 h-10 sm:w-10 sm:h-10"
+              class="w-10 h-10 sm:w-10 sm:h-10 cursor-pointer"
+              @click="router.push('/')"
             />
           </div>
-          <span
-            class="text-primary dark:text-blush-pink"
-            :style="{ fontSize: '1.25rem', fontWeight: '700' }"
-          >
+          <span class="text-primary dark:text-blush-pink" :style="{ fontSize: '1.25rem', fontWeight: '700' }">
             Thryve
           </span>
         </div>
@@ -158,9 +155,7 @@ const scrollToSection = (section: string) => {
             <span
               :class="[
                 'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
-                activeSection === 'blog' || route.path.startsWith('/blog')
-                  ? 'w-full'
-                  : 'w-0'
+                activeSection === 'blog' || route.path.startsWith('/blog') ? 'w-full' : 'w-0'
               ]"
             />
           </button>
