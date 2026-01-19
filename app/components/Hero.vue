@@ -28,16 +28,15 @@ onMounted(() => {
   intervalId = setInterval(() => {
     isAnimating.value = true
     timeoutId = setTimeout(() => {
-      currentWordIndex.value =
-        (currentWordIndex.value + 1) % rotatingWords.length
+      currentWordIndex.value = (currentWordIndex.value + 1) % rotatingWords.length
       isAnimating.value = false
     }, 300)
   }, 3000)
 
   // Intersection observer for phone animation
   const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
+    entries => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
           isVisible.value = true
         }
@@ -77,8 +76,7 @@ const handleSubmit = async () => {
     isSuccess.value = true
     email.value = ''
   } catch (error: any) {
-    errorMessage.value =
-      error.data?.message || 'Something went wrong. Please try again.'
+    errorMessage.value = error.data?.message || 'Something went wrong. Please try again.'
   } finally {
     isSubmitting.value = false
   }
@@ -97,15 +95,12 @@ onBeforeUnmount(() => {
     <div class="container mx-auto max-w-7xl w-full">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         <!-- Left Content -->
-        <div class="text-center lg:text-left space-y-8 order-2 lg:order-1">
+        <div class="text-center lg:text-left space-y-8 order-1 lg:order-1">
           <div
             class="inline-flex items-center gap-2 px-4 py-2 bg-white/60 dark:bg-[#2d2534]/60 backdrop-blur-sm rounded-full border border-primary/10 dark:border-blush-pink/10"
           >
             <Sparkles class="w-4 h-4 text-primary dark:text-blush-pink" />
-            <span
-              class="text-primary dark:text-blush-pink"
-              :style="{ fontSize: '0.875rem', fontWeight: 600 }"
-            >
+            <span class="text-primary dark:text-blush-pink" :style="{ fontSize: '0.875rem', fontWeight: 600 }">
               Hormone-aware wellness
             </span>
           </div>
@@ -124,9 +119,7 @@ onBeforeUnmount(() => {
                 <span
                   :class="[
                     'text-primary dark:text-secondary transition-all duration-300',
-                    isAnimating
-                      ? 'opacity-0 translate-y-4'
-                      : 'opacity-100 translate-y-0'
+                    isAnimating ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
                   ]"
                   :style="{ display: 'inline-block' }"
                 >
@@ -142,8 +135,8 @@ onBeforeUnmount(() => {
             class="text-foreground/80 dark:text-blush-pink/70 max-w-xl mx-auto lg:mx-0"
             :style="{ fontSize: '1.25rem', lineHeight: 1.7 }"
           >
-            Thryve helps you work with your hormones, not against them, through
-            cycle-aware workouts, nutrition, and daily insights.
+            Thryve helps you work with your hormones, not against them, through cycle-aware workouts, nutrition, and
+            daily insights.
           </p>
 
           <!-- Email Capture Form -->
@@ -157,22 +150,11 @@ onBeforeUnmount(() => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 13l4 4L19 7"
-              />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
-            <span class="text-green-700 dark:text-green-300 font-medium">
-              You're on the list! Check your email.
-            </span>
+            <span class="text-green-700 dark:text-green-300 font-medium"> You're on the list! Check your email. </span>
           </div>
-          <form
-            v-else
-            class="flex flex-col gap-3 max-w-xl mx-auto lg:mx-0 sm:flex-row"
-            @submit.prevent="handleSubmit"
-          >
+          <form v-else class="flex flex-col gap-3 max-w-xl mx-auto lg:mx-0 sm:flex-row" @submit.prevent="handleSubmit">
             <div class="relative flex-1">
               <Input
                 v-model="email"
@@ -182,10 +164,7 @@ onBeforeUnmount(() => {
                 :style="{ fontWeight: 600 }"
                 class="w-full h-13 border-foreground/30 placeholder:foreground/60 text-foreground dark:bg-white/10 backdrop-blur-sm dark:border-white/20 dark:text-white dark:placeholder:text-white/60 rounded-xl px-6 py-6 dark:focus:border-white focus:ring-primary"
               />
-              <p
-                v-if="errorMessage"
-                class="absolute -bottom-6 left-0 text-red-600 dark:text-red-400 text-sm"
-              >
+              <p v-if="errorMessage" class="absolute -bottom-6 left-0 text-red-600 dark:text-red-400 text-sm">
                 {{ errorMessage }}
               </p>
             </div>
@@ -204,16 +183,14 @@ onBeforeUnmount(() => {
             @click="scrollToFeatures"
           >
             See how it works
-            <ArrowDown
-              class="w-4 h-4 ml-2 hover:scale-110 transition-all duration-300"
-            />
+            <ArrowDown class="w-4 h-4 ml-2 hover:scale-110 transition-all duration-300" />
           </div>
         </div>
 
         <!-- Right Content - Phone Mockup -->
         <div
           ref="phoneRef"
-          class="relative flex items-center justify-center order-1 lg:order-2 transition-all duration-1000 ease-out"
+          class="relative flex items-center justify-center order-2 lg:order- transition-all duration-1000 ease-out"
           :class="{
             'opacity-0 translate-x-8 scale-95': !isVisible,
             'opacity-100 translate-x-0 scale-100': isVisible
@@ -233,13 +210,9 @@ onBeforeUnmount(() => {
                     <div
                       class="w-12 h-12 rounded-full bg-primary/10 dark:bg-blush-pink/10 flex items-center justify-center"
                     >
-                      <Sparkles
-                        class="w-6 h-6 text-primary dark:text-blush-pink"
-                      />
+                      <Sparkles class="w-6 h-6 text-primary dark:text-blush-pink" />
                     </div>
-                    <div
-                      class="px-3 py-1 bg-secondary/50 dark:bg-[#7a9d89]/20 rounded-full"
-                    >
+                    <div class="px-3 py-1 bg-secondary/50 dark:bg-[#7a9d89]/20 rounded-full">
                       <span
                         :style="{ fontSize: '0.75rem', fontWeight: 600 }"
                         class="text-foreground dark:text-secondary"
@@ -256,10 +229,7 @@ onBeforeUnmount(() => {
                     >
                       Good morning!
                     </h3>
-                    <p
-                      class="text-foreground/60 dark:text-blush-pink/60"
-                      :style="{ fontSize: '0.875rem' }"
-                    >
+                    <p class="text-foreground/60 dark:text-blush-pink/60" :style="{ fontSize: '0.875rem' }">
                       Day 8 of your cycle
                     </p>
                   </div>
@@ -268,22 +238,14 @@ onBeforeUnmount(() => {
                     class="bg-white/80 dark:bg-dark-background/40 rounded-2xl p-4 space-y-3 border border-primary/10 dark:border-blush-pink/10"
                   >
                     <div class="flex items-center justify-between">
-                      <span
-                        class="text-foreground/60 dark:text-blush-pink/60"
-                        :style="{ fontSize: '0.875rem' }"
-                      >
+                      <span class="text-foreground/60 dark:text-blush-pink/60" :style="{ fontSize: '0.875rem' }">
                         Energy Level
                       </span>
-                      <span
-                        class="text-primary dark:text-secondary"
-                        :style="{ fontSize: '0.875rem', fontWeight: 600 }"
-                      >
+                      <span class="text-primary dark:text-secondary" :style="{ fontSize: '0.875rem', fontWeight: 600 }">
                         Rising ↗
                       </span>
                     </div>
-                    <div
-                      class="h-2 bg-blush-pink dark:bg-[#2d2534] rounded-full overflow-hidden"
-                    >
+                    <div class="h-2 bg-blush-pink dark:bg-[#2d2534] rounded-full overflow-hidden">
                       <div
                         class="h-full w-3/4 bg-linear-to-r from-primary to-secondary dark:from-blush-pink dark:to-[#7a9d89]"
                       />
@@ -300,10 +262,7 @@ onBeforeUnmount(() => {
                       >
                         Today's Focus
                       </div>
-                      <div
-                        :style="{ fontSize: '0.875rem' }"
-                        class="text-foreground dark:text-blush-pink"
-                      >
+                      <div :style="{ fontSize: '0.875rem' }" class="text-foreground dark:text-blush-pink">
                         Strength Training
                       </div>
                     </div>
@@ -316,10 +275,7 @@ onBeforeUnmount(() => {
                       >
                         Nutrition
                       </div>
-                      <div
-                        :style="{ fontSize: '0.875rem' }"
-                        class="text-foreground dark:text-blush-pink"
-                      >
+                      <div :style="{ fontSize: '0.875rem' }" class="text-foreground dark:text-blush-pink">
                         Protein-rich meals
                       </div>
                     </div>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { Menu, X } from 'lucide-vue-next'
 import ImageWithFallback from './ui/img-with-fallback'
 import { Button } from './ui/button'
 import ThemeToggle from './ui/theme-toggle.vue'
@@ -9,8 +10,19 @@ import logoSvg from '../assets/images/logo.svg'
 const route = useRoute()
 const router = useRouter()
 const activeSection = ref('')
+const mobileMenuOpen = ref(false)
+
+const navItems = [
+  { id: 'about', label: 'About' },
+  { id: 'features', label: 'Features' },
+  { id: 'science', label: 'Science' },
+  { id: 'community', label: 'Community' },
+  { id: 'faqs', label: 'FAQs' },
+  { id: 'blog', label: 'Blog' }
+]
 
 const scrollToSection = (section: string) => {
+  mobileMenuOpen.value = false
   if (route.path !== '/') {
     router.push('/').then(() => {
       setTimeout(() => {
@@ -52,110 +64,22 @@ const scrollToSection = (section: string) => {
         <!-- Desktop Navigation -->
         <div class="hidden lg:flex items-center gap-8">
           <button
+            v-for="item in navItems"
+            :key="item.id"
             type="button"
             :class="[
               'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
-              activeSection === 'about'
+              activeSection === item.id || (item.id === 'blog' && route.path.startsWith('/blog'))
                 ? 'text-primary dark:text-blush-pink'
                 : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
             ]"
-            @click="scrollToSection('about')"
+            @click="scrollToSection(item.id)"
           >
-            About
+            {{ item.label }}
             <span
               :class="[
                 'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
-                activeSection === 'about' ? 'w-full' : 'w-0'
-              ]"
-            />
-          </button>
-          <button
-            type="button"
-            :class="[
-              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
-              activeSection === 'features'
-                ? 'text-primary dark:text-blush-pink'
-                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
-            ]"
-            @click="scrollToSection('features')"
-          >
-            Features
-            <span
-              :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
-                activeSection === 'features' ? 'w-full' : 'w-0'
-              ]"
-            />
-          </button>
-          <button
-            type="button"
-            :class="[
-              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
-              activeSection === 'science'
-                ? 'text-primary dark:text-blush-pink'
-                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
-            ]"
-            @click="scrollToSection('science')"
-          >
-            Science
-            <span
-              :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
-                activeSection === 'science' ? 'w-full' : 'w-0'
-              ]"
-            />
-          </button>
-          <button
-            type="button"
-            :class="[
-              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
-              activeSection === 'community'
-                ? 'text-primary dark:text-blush-pink'
-                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
-            ]"
-            @click="scrollToSection('community')"
-          >
-            Community
-            <span
-              :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
-                activeSection === 'community' ? 'w-full' : 'w-0'
-              ]"
-            />
-          </button>
-          <button
-            type="button"
-            :class="[
-              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
-              activeSection === 'faqs'
-                ? 'text-primary dark:text-blush-pink'
-                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
-            ]"
-            @click="scrollToSection('faqs')"
-          >
-            FAQs
-            <span
-              :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
-                activeSection === 'faqs' ? 'w-full' : 'w-0'
-              ]"
-            />
-          </button>
-          <button
-            type="button"
-            :class="[
-              'relative transition-all duration-300 font-medium pb-1 cursor-pointer',
-              activeSection === 'blog' || route.path.startsWith('/blog')
-                ? 'text-primary dark:text-blush-pink'
-                : 'text-foreground dark:text-blush-pink/80 hover:text-primary dark:hover:text-blush-pink'
-            ]"
-            @click="scrollToSection('blog')"
-          >
-            Blog
-            <span
-              :class="[
-                'absolute bottom-0 left-0 h-px bg-primary dark:bg-blush-pink transition-all duration-300 ease-out',
-                activeSection === 'blog' || route.path.startsWith('/blog') ? 'w-full' : 'w-0'
+                activeSection === item.id || (item.id === 'blog' && route.path.startsWith('/blog')) ? 'w-full' : 'w-0'
               ]"
             />
           </button>
@@ -164,13 +88,41 @@ const scrollToSection = (section: string) => {
         <!-- Right side - CTA + Theme Toggle -->
         <div class="flex items-center gap-3">
           <Button
-            class="bg-primary h-11 hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-4 sm:px-6"
+            class="hidden sm:flex bg-primary h-11 hover:bg-[#5a3d5b] dark:bg-blush-pink dark:hover:bg-white dark:text-dark-background text-white rounded-xl px-4 sm:px-6"
             :style="{ fontSize: '0.95rem', fontWeight: '600' }"
           >
             Join Early Access
           </Button>
           <ThemeToggle />
+
+          <!-- Mobile menu button -->
+          <button
+            type="button"
+            class="lg:hidden p-2 text-foreground dark:text-blush-pink"
+            @click="mobileMenuOpen = !mobileMenuOpen"
+          >
+            <Menu v-if="!mobileMenuOpen" class="w-6 h-6" />
+            <X v-else class="w-6 h-6" />
+          </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div
+      v-if="mobileMenuOpen"
+      class="lg:hidden border-t border-primary/10 dark:border-blush-pink/10 bg-background/98 dark:bg-dark-background/98 backdrop-blur-md"
+    >
+      <div class="container mx-auto px-4 py-4 space-y-1">
+        <button
+          v-for="item in navItems"
+          :key="item.id"
+          type="button"
+          class="block w-full text-left px-4 py-3 rounded-lg text-foreground dark:text-blush-pink/80 hover:bg-primary/10 dark:hover:bg-blush-pink/10 transition-colors"
+          @click="scrollToSection(item.id)"
+        >
+          {{ item.label }}
+        </button>
       </div>
     </div>
   </nav>
